@@ -1,5 +1,14 @@
 Ideas::Application.routes.draw do
-  get "static_pages/home"
+  
+  root to: 'static_pages#home'
+  resources :sessions , only: [:new, :create, :destroy]
+  resources :projects
+
+  match '/signin', to: 'sessions#new'
+  match 'signout', to: "sessions#destroy", via: :delete
+  match "/signup", to: "users#new"
+
+  match '/home', to: "dashboard#show"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
