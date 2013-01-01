@@ -5,7 +5,7 @@ Ideas::Application.routes.draw do
   resources :projects
 
   match '/signin', to: 'sessions#new'
-  match 'signout', to: "sessions#destroy", via: :delete
+  match '/signout', to: "sessions#destroy", via: :delete
   match "/signup", to: "users#new"
 
   match '/home', to: "dashboard#show"
