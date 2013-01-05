@@ -1,1 +1,28 @@
-<h2>All Projects</h2>
+<%= render "new_project" %>
+
+<h2>My Projects
+<% if @projects.any? %>
+<div class="pull-right"> 
+	<span class="badge badge-success"> <%= @projects.count %> </span> Ideas 
+</div>
+</h2>
+<br>
+<div id="projects_container">
+	<div class="project header"> 
+		<div class="box action"> 
+			<span>#</span>
+		</div>
+		<div class="box content">
+			Project Definition
+		</div>
+		<div class="notes_count">
+			# Notes 
+		</div>
+		
+	</div>
+
+	<%= render @projects %>
+</div>
+<% else %>
+	nothing
+<% end %>

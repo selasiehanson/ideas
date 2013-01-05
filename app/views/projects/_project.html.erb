@@ -1,0 +1,18 @@
+<div class="project"> 
+	<div class="box action"> 
+		<%= @projects.index(project) + 1 %>.
+	</div>
+	<div class="box content">
+		
+		<div class="title inner">
+			<%= link_to project.title, project %> 
+		</div>
+		<div class="description inner">
+			<%= project.description  %>
+		</div>
+	</div>
+	<div class="notes_count">
+		<span class="badge"> <%= project.notes.count %> </span>
+	</div>
+	
+</div>

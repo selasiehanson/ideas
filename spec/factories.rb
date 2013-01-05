@@ -5,4 +5,9 @@ FactoryGirl.define do
 		password "mascot"
 		password_confirmation "mascot"
 	end
+
+	factory :project do	
+		title "A project"
+		user
+	end
 end

@@ -26,6 +26,8 @@ describe User do
  	it { should respond_to(:password_confirmation) }
  	it { should respond_to(:remember_token) }
  	it { should respond_to(:authenticate) }
+
+ 	it { should respond_to(:projects)}
  	it { should be_valid }
 
 
@@ -112,6 +114,17 @@ describe User do
 
  	describe "remember token" do
  		before { @user.save }
- 		its(:remember_token) { should_not be_blank}
+ 		its (:remember_token) { should_not be_blank}
  	end
+
+ 	describe " projects" do
+ 		before { @user.save }
+
+ 		let!(:old_project) { FactoryGirl.create(:project, user: @user, created_at: 2.day.ago) }
+ 		let!(:new_project) { FactoryGirl.create(:project, user: @user, created_at: 1.day.ago) }
+
+ 		it "should show the recent project first" do
+ 			@user.projects.should == [new_project, old_project]
+ 		end
+ 	end 
 end
