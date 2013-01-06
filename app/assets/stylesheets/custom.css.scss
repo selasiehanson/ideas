@@ -130,6 +130,12 @@ input {
   }
 }
 
+#new_note{
+  textarea {
+    height : 150px;
+  }
+}
+
 #projects_container {
   border: 1px solid #bbb;
   border-bottom: 0px;

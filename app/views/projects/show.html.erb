@@ -2,18 +2,22 @@
 	<%= @project.title %>
 </h2>
 <div>
+	<%= render "notes/new_note" %>
+</div>
+<div>
 	<span class='badge badge-success'> <%= pluralize( @project.notes.count,"note") %>  </span>
 </div>
  <br>
 
 	<% if @project.notes.any? %>
-	<table class="table table-bordered table-striped">
-		<% @project.notes.each do |note|%>
-			<tr>
-				<td><%=  @project.notes.index(note) + 1 %>. </td>
-				<td><%= note.content %></td>
-			</tr>
-		<% end  %>
+	
+		<table class="table table-bordered table-striped">
+			<% @project.notes.each do |note|%>
+				<tr>
+					<td> <%=  @project.notes.index(note) + 1 %>. </td>
+					<td> <%= note.content %> </td>
+				</tr>
+			<% end  %>
 	</table>
 	<% else %>
 		<div>There currently no notes for this project </div>

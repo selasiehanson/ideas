@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
+		@note = @project.notes.build
 	end
 
 	def create
@@ -18,4 +19,6 @@ class ProjectsController < ApplicationController
 		end
 		redirect_to projects_url
 	end
+
+
 end

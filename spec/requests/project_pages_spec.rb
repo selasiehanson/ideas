@@ -49,10 +49,6 @@ describe "ProjectPages" do
 
 	  		end
 	  	end
-
-	  	describe "add a new note" do
-	  		
-	  	end
 	end
 
 
