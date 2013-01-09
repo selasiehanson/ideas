@@ -7,7 +7,8 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
-		@note = @project.notes.build
+		@notes = @project.notes
+		# @note = @project.notes.build
 	end
 
 	def create
