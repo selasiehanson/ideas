@@ -10,9 +10,14 @@ describe "StaticPages" do
     
     it { should have_selector("title", text: "Ideas") }
 
-    # it { should have_link("Sign in") }
+    describe "when user has not signed in" do
+      it { should have_content "SignUp" }
+    end
 
-    # it { should_not have_link("Home") }
+    describe "when user has signed in" do
+      
+    end
+
   end
 
   describe "Sign in Page" do

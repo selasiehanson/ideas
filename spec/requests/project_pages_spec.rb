@@ -10,8 +10,6 @@ describe "ProjectPages" do
     	let!(:p1) { FactoryGirl.create(:project, title: "First Project", user: user) }
     	let!(:p2) { FactoryGirl.create(:project, title: "Second Project", user: user) }
 
-	  	
- 
 	  	describe "list"  do
 	  		before { visit projects_path }
 	  		it { should have_selector("h2", text: "My Projects") }
@@ -38,19 +36,44 @@ describe "ProjectPages" do
 	  			end
 
 	  			it "should create a project idea" do
-	  				expect { click_button "Add" }.to change(Project, :count).by(1)
+	  				expect { click_button "Create Project" }.to change(Project, :count).by(1)
 	  			end
 	  		end
 
 	  		describe "with invalid information" do
 	  			it "should not create a project idea" do
-	  				expect { click_button "Add" }.not_to change(Project, :count)
+	  				expect { click_button "Create Project" }.not_to change(Project, :count)
 	  			end
 
 	  		end
 	  	end
 	end
 
+
+	describe "edit project" do
+		let!(:p1) { FactoryGirl.create(:project, title: "First Project", user: user) }
+		before { visit edit_project_path p1 }
+			
+		describe "with valid information" do
+			let(:new_title) { "New title" }
+
+			before do
+				fill_in "Title", with: new_title
+				click_button "Update Project"
+			end
+
+			specify { p1.reload.title.should == new_title }
+		end
+
+		describe "with invalid information" do
+			before do
+				fill_in "Title", with: " "
+				click_button "Update Project"
+			end
+
+			it { should have_content "Error" }
+		end
+	end
 
 	
 end

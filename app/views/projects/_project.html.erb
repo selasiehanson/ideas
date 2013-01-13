@@ -12,7 +12,17 @@
 		</div>
 	</div>
 	<div class="notes_count">
-		<span class="badge"> <%= project.notes.count %> </span>
+		<% count = project.notes.count %>
+		<% if count > 0 %>
+			<span class="badge badge-warning"> <%= count %> </span>
+		<% else %>
+			<span class="badge"> <%=  count %> </span>
+		<% end %>
+		
+		<span> 
+			<a href="<%= edit_project_path(project) %> "> 
+				<i class="icon icon-pencil"></i>
+			</a>
+			</span>
 	</div>
-	
 </div>

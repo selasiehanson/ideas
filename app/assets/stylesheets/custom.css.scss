@@ -44,7 +44,11 @@ h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
-  text-align: center;
+  color : #7096AF;
+}
+
+.logo_text{
+  color : #B84C4C;
 }
 
 h2 {
@@ -119,17 +123,20 @@ input {
   height: auto !important;
 }
 
-#new_project{
+#the_project_form{
+  width: 400px;
   input[type="text"] {
-    width: 450px;
+    width: 350px;
   }
 
   textarea {
-    height: 100px;
-    width: 450px;
+    max-height: 300px;
+    width: 350px;
   }
 }
-
+#wrapper{
+  width: 540px; 
+}
 #new_note{
   textarea {
     height : 150px;
@@ -169,7 +176,7 @@ input {
 
       .content {
         padding-left: 20px;
-        width: 780px;
+        width: 400px;
         .inner{
           width: 100%;
         }

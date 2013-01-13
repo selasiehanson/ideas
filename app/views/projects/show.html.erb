@@ -1,22 +1,22 @@
-<h2>
-	<%= @project.title %>
-</h2>
+<h2> <%= @project.title %> </h2>
 <div>
-	<%= render "notes/new_note" %>
+	<%= render "notes/note_form" %>
 </div>
 <div>
-	<span class='badge badge-success'> <%= pluralize( @notes.count,"note") %>  </span>
+	<span class='badge badge-success'> <%= pluralize(@notes.count,"note") %>  </span>
 </div>
  <br>
-notes
+Notes For "<%= @project.title %>"
 	<% if @notes.any? %>
-	
 		<table class="table table-bordered table-striped">
-			<% @notes.each do |note|%>
+			<% @notes.each do |note| %>
 				<% if note.content %>
 					<tr>
-						<td class="action_column"> <%=  @notes.index(note) + 1 %>. </td>
+						<td class="action_column"> <%= @notes.index(note) + 1 %>. </td>
 						<td> <%= note.content %> </td>
+						<td class="action_column">
+							<a href="<%= edit_project_note_path(@project,note) %>"> <i class="icon icon-pencil"> </i> </a>
+						 </td>
 					</tr>
 					<% end %>
 				<% end  %>

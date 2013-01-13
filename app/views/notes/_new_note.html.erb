@@ -1,8 +1,0 @@
-<legend>Add note</legend>
-<%= form_for([@project, @project.notes.build]) do |f| %>
-	<div>
-		<%= f.label :content %>
-		<%= f.text_area :content %>
-	</div>
-	<%= f.submit "Add", class:  "btn btn-success" %>
-<% end  %>
