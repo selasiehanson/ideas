@@ -17,7 +17,6 @@ describe "ProjectPages" do
 	  		it { should have_content(p1.title) }		
 	  		it { should have_content(p1.description) }
 	  		it { should have_content(p2.title) }
-	  		it { should have_content(p2.description) }
 	  		it { should have_content(user.projects.count) }
 	  	end
 
@@ -25,7 +24,8 @@ describe "ProjectPages" do
 	  		before { visit project_path(p1) }
 
 	  		it { should have_selector("h2", text: p1.title) }
-	  		it { should have_selector("span", text: "#{p1.notes.count} notes")}
+	  		it { should have_selector("span", text: "#{p1.notes.count}") }
+	  		it { should have_selector("i", text: "Notes for") } 
 	  	end
 
 	  	describe "add a new project" do
@@ -47,33 +47,31 @@ describe "ProjectPages" do
 
 	  		end
 	  	end
-	end
 
+	  	describe "edit project" do
+			let!(:p1) { FactoryGirl.create(:project, title: "First Project", user: user) }
+			before { visit edit_project_path p1 }
+				
+			describe "with valid information" do
+				let(:new_title) { "New title" }
 
-	describe "edit project" do
-		let!(:p1) { FactoryGirl.create(:project, title: "First Project", user: user) }
-		before { visit edit_project_path p1 }
-			
-		describe "with valid information" do
-			let(:new_title) { "New title" }
+				before do
+					fill_in "Title", with: new_title
+					click_button "Update Project"
+				end
 
-			before do
-				fill_in "Title", with: new_title
-				click_button "Update Project"
+				specify { p1.reload.title.should == new_title }
 			end
 
-			specify { p1.reload.title.should == new_title }
-		end
+			describe "with invalid information" do
+				before do
+					fill_in "Title", with: " "
+					click_button "Update Project"
+				end
 
-		describe "with invalid information" do
-			before do
-				fill_in "Title", with: " "
-				click_button "Update Project"
+				it { should have_content "Error" }
 			end
-
-			it { should have_content "Error" }
 		end
-	end
 
-	
+	end
 end

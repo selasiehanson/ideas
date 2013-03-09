@@ -12,15 +12,16 @@ describe "StaticPages" do
 
     describe "when user has not signed in" do
       it { should have_content "SignUp" }
-    end
-
-    describe "when user has signed in" do
-      
+      it { should have_selector("button", text: "Click Here to Sign Up")}
     end
 
   end
 
-  describe "Sign in Page" do
-    # it "should"
+
+  describe "Sigin page" do
+    before { visit signin_path }
+    
+    it { should have_selector("h1", text: "Sign In") }
+    it { should have_selector("title", text: "Sign In") }
   end
 end

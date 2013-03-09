@@ -8,5 +8,9 @@
 		<%= f.label :description %>
 		<%= f.text_area :description %>
 	</div>
+	<div>
+		<%= f.label :project_category  %>
+		<%= collection_select(:project, :project_category_id, ProjectCategory.all, :id, :name) %>
+	</div>
 	<%= f.submit  class: "btn btn-success" %>
 	<% end %>	

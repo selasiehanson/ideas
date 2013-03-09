@@ -16,7 +16,15 @@ class NotesController < ApplicationController
 	end
 
 	def update
-		
+		@note = Note.find(params[:id])
+		@project = Project.find(params[:project_id])
+		if @note.update_attributes(params[:note])
+			flash.now[:succes] = "Note updated successfully"
+			redirect_to project_path(@project)
+		else
+			flash.now[:error] = "Error. #{@note.errors.full_messages.to_sentence}"
+			render :edit
+		end
 	end
 	
 end

@@ -1,13 +1,25 @@
 <h2> <%= @project.title %> </h2>
-<div>
+<div id="note_form">
+	<legend>Add note</legend>
 	<%= render "notes/note_form" %>
 </div>
-<div>
-	<span class='badge badge-success'> <%= pluralize(@notes.count,"note") %>  </span>
-</div>
+
  <br>
-Notes For "<%= @project.title %>"
+ <div>
+
+ <% notes_count = @notes.count %>
+ <% if notes_count > 0 %>
+ 	<span class='badge badge-warning notes_count'> <%= notes_count %>  </span>
+ <% else %>
+ 	<span class='badge notes_count'>  <%= notes_count %>  </span>
+ <% end %>
+ 
+<i>	<%= pluralize_without_count(notes_count,"Note") %> for "<%= @project.title %>" </i>
+	</div>
+ 
+	<br>
 	<% if @notes.any? %>
+
 		<table class="table table-bordered table-striped">
 			<% @notes.each do |note| %>
 				<% if note.content %>

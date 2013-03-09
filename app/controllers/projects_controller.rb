@@ -1,8 +1,11 @@
 class ProjectsController < ApplicationController
+	before_filter :signed_in_user, only: [:index, :edit, :update]
+	before_filter :correct_project_owner, only: [:edit, :update]
+	
 	def index	
 		@projects = current_user.projects
 		#this is to allow us to create a new project
-		@project = Project.new
+		@project = Project.new		
 	end
 
 	def show
@@ -12,6 +15,15 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
+		# project_category = ProjectCategory.find(params[:project][:project_category_id]);
+		#todo: checks later
+		# data = {
+		# 	title: params[:project][:title],
+		# 	description: params[:project][:description]
+		# }
+		# @project = Project.new(data)
+		# @project.user = current_user
+		# @project.project_category = project_category
 		@project = current_user.projects.build(params[:project])
 		if @project.save
 			flash.now[:success] = "Project Idea successfully created!"		
@@ -22,7 +34,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def destroy
-		
+	
 	end
 
 	def edit
@@ -32,15 +44,26 @@ class ProjectsController < ApplicationController
 
 	def update
 		@project = Project.find(params[:id])
-
-		if @project.update_attributes(params[:project])
+		
+		@project.title = params[:project][:title]
+		@project.description = params[:project][:description]
+		@project.project_category = ProjectCategory.find(params[:project][:project_category_id])
+		
+		if @project.save
 			flash.now[:success] = "Project '#{@project.title}' Updated succesffuly"
+			@projects = current_user.projects
 			redirect_to projects_url
 		else
-			flash.now[:error] = "Error. something went wrong. Please try again"
-			render 'edit'
-			
+			# flash.now[:error] = "Error. something went wrong. Please try again"
+			flash.now[:error] = @project.errors.full_messages.to_sentence
+			# @projects = current_user.projects
+			render "edit"	
 		end
+	end
 
+	private 
+	def correct_project_owner
+		@project = current_user.projects.find_by_id(params[:id])
+		redirect_to signin_url if @project.nil?
 	end
 end

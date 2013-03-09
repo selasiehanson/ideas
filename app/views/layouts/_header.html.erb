@@ -1,19 +1,29 @@
-<header class="navbar navbar-fixed-top navbar-inverse">
+<div class="navbar navbar-fixed-top navbar-inverse">
   <div class="navbar-inner">
     <div class="container">
-      <%= link_to "ME TOTS", root_path, id: "logo" %>
-      <nav>
+      <%= link_to "ME TOTS", root_path, id: "logo", class: "brand" %>
+      <div class="nav-collapse">
         <ul class="nav pull-right">
-          
           <% if signed_in? %>
-            <li><%= link_to "Home",    home_path %></li>
-            <li><%= link_to "Projects", projects_path %></li>
-            <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+            <li><%= link_to "Home", home_path %></li>
+            <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  My Stuff
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li> <%= link_to "Projects", projects_path  %> </li>
+                  <li> <%= link_to "Project Categories", project_categories_path %> </li>
+                </ul>
+            </li>
+            <li>
+              <%= link_to "Sign out", signout_path, method: "delete" %>
+            </li>
           <% else %>
-            <li><%= link_to "Sign in", signin_path %></li>
+            <li> <%= link_to "Sign in", signin_path %> </li>
           <% end %>
         </ul>
-      </nav>
+      </div>
     </div>
   </div>
-</header>
+</div>

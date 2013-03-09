@@ -14,7 +14,7 @@ require 'spec_helper'
 
 describe User do
  	before do 
- 		@user =  User.new(name: "Selasie Hanson", email: "soundfever18@gmail.com",
+ 		@user =  User.new(name: "Selasie Hanson", email: "soundfever8@gmail.com",
  			password: "foobar", password_confirmation: "foobar") 
  	end
  	subject { @user }
@@ -87,7 +87,7 @@ describe User do
  		it { should_not be_valid }
  	end 
 
- 	describe "when passwords do not patch" do
+ 	describe "when passwords do not match" do
  		before { @user.password_confirmation = "some other password" }
  		it { should_not be_valid }
  	end
@@ -117,9 +117,11 @@ describe User do
  		its (:remember_token) { should_not be_blank}
  	end
 
- 	describe " projects" do
- 		before { @user.save }
-
+ 	describe "projects association" do
+ 		
+ 		before do  
+ 			@user.save 
+ 		end
  		let!(:old_project) { FactoryGirl.create(:project, user: @user, created_at: 2.day.ago) }
  		let!(:new_project) { FactoryGirl.create(:project, user: @user, created_at: 1.day.ago) }
 
@@ -127,4 +129,15 @@ describe User do
  			@user.projects.should == [new_project, old_project]
  		end
  	end 
-end
+
+ 	describe "project categories" do 
+ 		before { @user.save }
+
+ 		let!(:pc1) { FactoryGirl.create(:project_category, user: @user, created_at: 2.day.ago ) }
+ 		let!(:pc2) { FactoryGirl.create(:project_category, user: @user, created_at: 1.day.ago ) }
+
+ 		it "should show the recent project category first" do	
+ 			@user.project_categories.should == [pc2, pc1]
+ 		end
+ 	end
+ end

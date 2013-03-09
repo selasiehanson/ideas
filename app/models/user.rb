@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_many :projects
+  has_many :project_categories
 
   before_save do |user|
   	user.email = email.downcase

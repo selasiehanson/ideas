@@ -10,6 +10,9 @@
 		<div class="description inner">
 			<%= project.description  %>
 		</div>
+		<div> <span class="label label-inverse">category</span> 
+			<i class="label label-important"> <%= project.project_category.name %> </i>
+		</div>
 	</div>
 	<div class="notes_count">
 		<% count = project.notes.count %>

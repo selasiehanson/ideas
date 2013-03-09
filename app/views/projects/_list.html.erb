@@ -1,5 +1,5 @@
 <h2>My Projects
-<% if @projects.any? %>
+<% if not @projects.empty? %>
 <div class="pull-right"> 
 	<span class="badge badge-success"> <%= @projects.count %> </span> Ideas 
 </div>
@@ -22,5 +22,5 @@
 	<%= render @projects %>
 </div>
 <% else %>
-	nothing
+	<!-- nothing -->
 <% end %>

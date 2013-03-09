@@ -1,3 +1,4 @@
+
 @import "bootstrap";
 
 /* universal */
@@ -111,7 +112,7 @@ footer {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea,  .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   padding: 10px;
@@ -137,7 +138,7 @@ input {
 #wrapper{
   width: 540px; 
 }
-#new_note{
+#note_form{
   textarea {
     height : 150px;
   }

@@ -1,5 +1,7 @@
 Ideas::Application.routes.draw do
   
+  resources :project_categories
+  resources :users  
   root to: 'static_pages#home'
   resources :sessions , only: [:new, :create, :destroy]
   resources :projects do
