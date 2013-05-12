@@ -1,5 +1,4 @@
 <h2>Project Categories 
-
 <div class="pull-right">
 	<span class="badge badge-success">  
 		<%= @project_categories.count %> 
@@ -24,14 +23,16 @@
 				<td class="action_column"> <%= @project_categories.index(project_category) + 1 %>. </td>
 				<td> <%= project_category.name %> </td>
 				<td> <%= project_category.description %></td>
-				<td> <a href="<%= edit_project_category_path(project_category) %>"> <i class="icon icon-pencil"></i> </a> </td>
+				<td> 
+					<a href="<%= edit_project_category_path(project_category) %>"> 
+						<i class="icon icon-pencil"></i> 
+					</a> 
+				</td>
 			</tr>
 			<% end %>
 		</tbody>
-
 	</table>
 </div>
-
 <% else %>
 	<div class="pull-right">
 

@@ -29,6 +29,8 @@ describe "ProjectPages" do
 	  	end
 
 	  	describe "add a new project" do
+	  		before { visit projects_path }
+	  		
 	  		describe "with valid information" do
 	  			before do
 	  				fill_in "Title", with: "New project"

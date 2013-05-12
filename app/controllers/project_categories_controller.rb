@@ -34,7 +34,6 @@ class ProjectCategoriesController < ApplicationController
 			@project_categories = ProjectCategory.all
 			render :edit
 		end
-
 	end
 
 	def correct_project_category_owner

@@ -12,7 +12,7 @@ describe "StaticPages" do
 
     describe "when user has not signed in" do
       it { should have_content "SignUp" }
-      it { should have_selector("button", text: "Click Here to Sign Up")}
+      it { should have_button("Click Here to Sign Up")}
     end
 
   end

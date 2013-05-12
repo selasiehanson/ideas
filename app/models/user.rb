@@ -23,6 +23,8 @@ class User < ActiveRecord::Base
 
   before_save  :create_remember_token 
 
+  after_create :create_default_project_category
+
   validates :name, presence: true, length: { maximum: 50 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :email, presence: true, format: {with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
@@ -32,5 +34,9 @@ class User < ActiveRecord::Base
   private
     def create_remember_token
       self.remember_token = SecureRandom.urlsafe_base64
+    end
+
+    def create_default_project_category
+      self.project_categories.build(name: "None", description: "None")
     end
 end

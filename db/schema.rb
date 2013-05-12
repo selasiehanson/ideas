@@ -22,13 +22,6 @@ ActiveRecord::Schema.define(:version => 20130306171324) do
 
   add_index "notes", ["project_id"], :name => "index_notes_on_project_id"
 
-  create_table "product_categories", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
   create_table "project_categories", :force => true do |t|
     t.string   "name"
     t.text     "description"

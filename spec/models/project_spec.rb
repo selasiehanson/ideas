@@ -4,25 +4,31 @@ describe Project do
   let(:user) { FactoryGirl.create(:user) }
 
   before do
-  	@project  = user.projects.build(title: "Project One", description: "Our very first project")
+    @project = FactoryGirl.build(:project, title: "Project One", description: "Our very first project", user: user)
   end
 
   subject { @project }
-
-  	  it { should respond_to(:title) }
-  	  it { should respond_to(:user_id) }
-      it { should respond_to(:project_category_id) }
-	    it { should respond_to(:user) }
-  		
-	    its(:user) { should == user }
-
-  	 it { should be_valid }
-
-
-  describe "when user id is not present" do
-  	before { @project.user_id = nil }
-  	it { should_not be_valid }
+  
+  context "Validations" do
+    [:project_category_id, :title, :user_id].each do |attr|
+      it "requires #{attr}" do
+        subject.send("#{attr}=", nil)
+        subject.should_not be_valid
+        subject.errors.messages.should_not be_nil
+      end
+    end
   end
+
+  context "Associations" do
+    it { should respond_to(:user) }
+    it { should respond_to(:project_category) }
+    it { should respond_to(:notes) }
+  end
+  
+	
+  its(:user) { should == user }
+
+  it { should be_valid }
 
   describe "accessible attributes" do
   	it "should not allow access to user_id" do

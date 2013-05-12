@@ -137,7 +137,16 @@ describe User do
  		let!(:pc2) { FactoryGirl.create(:project_category, user: @user, created_at: 1.day.ago ) }
 
  		it "should show the recent project category first" do	
- 			@user.project_categories.should == [pc2, pc1]
+ 			@user.project_categories[0].should == pc2
+ 			@user.project_categories[1].should == pc1
+ 		end
+ 	end
+
+ 	describe "has one project category as soon as a user is created," do
+ 		before { @user.save }
+ 		it "is called none" do
+ 			@user.project_categories.length.should == 1
+ 			@user.project_categories[0].name.downcase.should == 'NONE'.downcase
  		end
  	end
  end
