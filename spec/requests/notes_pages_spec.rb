@@ -63,6 +63,14 @@ describe "NotesPages" do
 					it { should have_content "Error" }
 				end
 			end
+
+			describe "delete a note" do
+				# before { delete project_note_path(p1, p1.notes[0]) }
+				# before { delete project_note_path(p1) }
+				# specify { response.should redirect_to(project_path(p1)) }
+				# before { click_link "delete_note"}
+				# its 
+			end
 		end
 	end
 

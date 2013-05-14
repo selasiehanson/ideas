@@ -24,10 +24,16 @@
 			<% @notes.each do |note| %>
 				<% if note.content %>
 					<tr>
-						<td class="action_column"> <%= @notes.index(note) + 1 %>. </td>
+						<td class="action_column1"> <%= @notes.index(note) + 1 %>. </td>
 						<td> <%= note.content %> </td>
-						<td class="action_column">
-							<a href="<%= edit_project_note_path(@project,note) %>"> <i class="icon icon-pencil"> </i> </a>
+						<td class="action_column2">
+							<a href="<%= edit_project_note_path(@project,note) %>"> 
+								<i class="icon icon-pencil"> </i> 
+							</a>
+							
+							<a id="delete_note" href="<%=project_note_path(@project,note) %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow"> 
+								<i class="icon icon-remove"></i> 	
+							</a>
 						 </td>
 					</tr>
 					<% end %>
