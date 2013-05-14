@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-	before_filter :signed_in_user, only: [:index, :edit, :update]
+	before_filter :signed_in_user, only: [:index, :edit, :update, :show]
 	before_filter :correct_project_owner, only: [:edit, :update]
 	
 	def index	
@@ -16,15 +16,6 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		# project_category = ProjectCategory.find(params[:project][:project_category_id]);
-		#todo: checks later
-		# data = {
-		# 	title: params[:project][:title],
-		# 	description: params[:project][:description]
-		# }
-		# @project = Project.new(data)
-		# @project.user = current_user
-		# @project.project_category = project_category
 		@project = current_user.projects.build(params[:project])
 		if @project.save
 			flash.now[:success] = "Project Idea successfully created!"		

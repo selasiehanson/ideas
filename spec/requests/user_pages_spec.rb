@@ -11,7 +11,7 @@ describe "UserPages" do
     	it { should have_selector("title", text: "Sign Up") }
   	
       describe "signup" do  
-        let (:submit) { "Create Account"}
+        let (:submit) { "Create Account" }
         describe "with invalid information" do  
           it "should not create the account" do
             expect { click_button submit}.not_to change(User, :count)
@@ -22,7 +22,7 @@ describe "UserPages" do
           before  do
             # fill_in "First Name", with: "Kofi"
             # fill_in "Last Name", with: "Poku"
-            fill_in  "Name", with: "Kofi Poku"
+            fill_in "Name", with: "Kofi Poku"
             fill_in "Email", with: "kp@yahoo.com"
             fill_in "Password", with: "123456"
             fill_in "Confirmation", with: "123456"

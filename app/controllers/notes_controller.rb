@@ -1,5 +1,4 @@
 class NotesController < ApplicationController
-	
 	def create
 		@note = Project.find(params[:project_id]).notes.build(params[:note])
 		if @note.save
@@ -25,6 +24,12 @@ class NotesController < ApplicationController
 			flash.now[:error] = "Error. #{@note.errors.full_messages.to_sentence}"
 			render :edit
 		end
+	end
+
+	def destroy
+		note = Note.find(params[:id])
+		note.destroy
+		redirect_to(Project.find(params[:project_id]))
 	end
 	
 end

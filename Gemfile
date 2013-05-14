@@ -42,9 +42,13 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'unicorn'
+
+
 group :production do
-  gem 'pg', '0.12.2'
+  gem 'pg'
 end
+
 
 gem 'jquery-rails'
 
