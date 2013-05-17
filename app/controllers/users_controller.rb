@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   	@user = User.create(params[:user])
   	if @user.save
   		sign_in @user
-  		flash.now[:success] = "Welcome to Me Tots. Quickly start keeping track of your Ideas"
+  		flash[:success] = "Welcome to Me Tots. Quickly start keeping track of your Ideas"
   		redirect_to projects_url
   	else
   		flash.now[:error] = "Sorry something went wrong please try again"
@@ -16,12 +16,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-  	
+  	@user = User.find(params[:id])
   end
 
 
   def update
-  	
+  	@user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      flash[:success] = "User updated successfully"
+      redirect_to @user
+    else
+      flash.now[:error] = "Error. #{@user.errors.full_messages.to_sentence}"
+      render 'edit'
+    end
   end
 
 end

@@ -10,11 +10,10 @@ class ProjectCategoriesController < ApplicationController
 	def create
 		@project_category =current_user.project_categories.build(params[:project_category])
 		if @project_category.save
-			flash.now[:success] = "Project Category created"
+			flash[:success] = "Project Category created"
 		else
-			flash.now[:error] = "Some Went wrong please try again"
+			flash[:error] = "Some Went wrong please try again"
 		end
-
 		redirect_to project_categories_url
 	end
 
@@ -25,14 +24,13 @@ class ProjectCategoriesController < ApplicationController
 
 	def update
 		@project_category = ProjectCategory.find(params[:id])
-		
 		if @project_category.update_attributes(params[:project_category])
-			flash.now[:success] = "Project Category Saved"
+			flash[:success] = "Project Category Saved"
 			redirect_to project_categories_url
 		else
 			flash.now[:error] = "Error : " + @project_category.errors.full_messages.to_sentence 
 			@project_categories = ProjectCategory.all
-			render :edit
+			render 'edit'
 		end
 	end
 

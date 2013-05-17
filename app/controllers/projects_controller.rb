@@ -18,9 +18,9 @@ class ProjectsController < ApplicationController
 	def create
 		@project = current_user.projects.build(params[:project])
 		if @project.save
-			flash.now[:success] = "Project Idea successfully created!"		
+			flash[:success] = "Project Idea successfully created!"		
 		else
-			flash.now[:error] = "Sorry something  went wrong please try again"
+			flash[:error] = "Sorry something  went wrong please try again"
 		end
 		redirect_to projects_url
 	end
@@ -32,6 +32,7 @@ class ProjectsController < ApplicationController
 	def edit
 		@project = Project.find(params[:id])
 		@projects = current_user.projects
+		@project_categories = current_user.project_categories	
 	end
 
 	def update
@@ -42,7 +43,7 @@ class ProjectsController < ApplicationController
 		@project.project_category = ProjectCategory.find(params[:project][:project_category_id])
 		
 		if @project.save
-			flash.now[:success] = "Project '#{@project.title}' Updated succesffuly"
+			flash[:success] = "Project '#{@project.title}' Updated succesffuly"
 			@projects = current_user.projects
 			redirect_to projects_url
 		else

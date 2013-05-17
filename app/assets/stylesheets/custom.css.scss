@@ -84,6 +84,27 @@ p {
   }
 }
 
+$border : 1px solid #CBCBCB;
+
+.login_form{
+  border: $border;
+  
+  .title {
+    background : #BDE63D;
+    padding: 10px 25px;
+    border-bottom: $border;
+
+    .text {
+      color: #080809;
+      font-weight: bold;
+      font-size: 20px;
+    }
+  }
+
+  form {
+    padding: 20px;
+  }
+}
 
 footer {
   margin-top: 45px;

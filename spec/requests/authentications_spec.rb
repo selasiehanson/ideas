@@ -24,9 +24,10 @@ describe "Authentications" do
       end
 
       # it { should have_link("Home", href: home_path ) }
-      it { should have_link("Projects", href: projects_path) }
-      it { should have_link("Project Categories", href: project_categories_path) }
-      it { should have_link("Sign out", href: signout_path ) }
+	it { should have_link("Projects", href: projects_path) }
+	it { should have_link("Profile", href: user_path(user)) }
+      	it { should have_link("Project Categories", href: project_categories_path) }
+     	it { should have_link("Sign out", href: signout_path ) }
       
       it { should_not have_link("Sign In", href: signin_path) }
 

@@ -20,8 +20,6 @@ describe "UserPages" do
 
         describe "with valid information " do
           before  do
-            # fill_in "First Name", with: "Kofi"
-            # fill_in "Last Name", with: "Poku"
             fill_in "Name", with: "Kofi Poku"
             fill_in "Email", with: "kp@yahoo.com"
             fill_in "Password", with: "123456"
@@ -46,8 +44,12 @@ describe "UserPages" do
           end
 
           describe "with invalid information" do
-            before { click_button "Save changes"}
-            it { should have_content "error"}
+            before do 
+              fill_in "Name", with: " "
+              fill_in "Email", with: " "
+              click_button "Update Account" 
+            end
+            it { should have_content "Error"}
           end
 
 
@@ -59,9 +61,8 @@ describe "UserPages" do
             before   do
               fill_in "Name", with: new_name
               fill_in "Email", with: new_email
-              fill_in "Password", with: user.password
-              fill_in "Confirmation", with: user.password
-              click_button "Save changes"
+              
+              click_button "Update Account"
             end
 
             it {should have_selector "div.alert.alert-success" }
