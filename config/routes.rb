@@ -1,11 +1,13 @@
 Ideas::Application.routes.draw do
   
   resources :project_categories
+
   resources :users  
   root to: 'static_pages#home'
   resources :sessions , only: [:new, :create, :destroy]
   resources :projects do
     resources :notes
+    resources :tasks
   end
 
   match '/signin', to: 'sessions#new'
@@ -13,6 +15,7 @@ Ideas::Application.routes.draw do
   match "/signup", to: "users#new"
 
   match '/home', to: "dashboard#show"
+  # get '/tasks', to: "tasks#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

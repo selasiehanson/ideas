@@ -36,7 +36,10 @@ describe "ProjectPages" do
 		  	end
 
 		  	describe "add a new project" do
-		  		before { visit projects_path }
+		  		before do
+		  			user
+		  		 visit projects_path 
+		  		end
 		  		
 		  		describe "with valid information" do
 		  			before do
@@ -88,9 +91,32 @@ describe "ProjectPages" do
 	end
 
 	context "when user is NOT signed in" do 	
-		before { get project_path(p1) }
-		specify { response.should redirect_to (signin_path) }
-	end
+		let(:user) { FactoryGirl.create(:user) }
+        let(:p1) { FactoryGirl.create(:project) }
+
+        describe "visiting the project page" do
+          before { visit projects_path }
+          it { should have_selector("title", text: "Sign In") }
+        end
+
+        describe "" do
+        	before { get project_path(p1) }
+			specify { response.should redirect_to (signin_path) }
+	   	end
+
+        describe "visiting the edit project page" do
+          before { visit edit_project_path(p1) }
+          it { should have_selector("title", text: "Sign In") }
+        end
+
+        describe "submitting to the update action" do
+          before { put project_path(p1) }
+          specify { response.should redirect_to signin_path }
+        end
+
+        #todo 
+        #tests for notes for unsigned users
+      end
 
     
 end

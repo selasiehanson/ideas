@@ -12,6 +12,11 @@ describe Note do
 	it { should respond_to(:content) }
 	it { should respond_to(:project_id) }
 
+	context "Associations" do	
+		it {should respond_to(:project) }
+		it {should respond_to(:task) }
+	end
+
 	describe "when content is not available" do
 		before { @note.content = nil }
 		it { should_not be_valid }

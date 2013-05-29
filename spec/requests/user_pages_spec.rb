@@ -73,11 +73,24 @@ describe "UserPages" do
       end
     end
 
-
-
   	describe "Home" do 
   		describe "when user has signed in" do
       		
     	end
   	end
+
+    describe "users pages" do 
+
+      context "authorization" do
+        
+        context "on users for users who have NOT signed in" do
+          
+          describe "visiting the users path" do 
+            before { get users_path }
+            specify { response.should redirect_to signin_path }
+          end
+
+        end
+      end
+    end
 end

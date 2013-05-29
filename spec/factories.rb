@@ -19,9 +19,15 @@ FactoryGirl.define do
 		project_category
 	end
 
-
 	factory :note do
 		content "some random content"
+		project
+	end
+
+	factory :task do
+		content "some title"
+		note
+		status :pending
 		project
 	end
 

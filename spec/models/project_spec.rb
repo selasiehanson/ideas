@@ -23,6 +23,7 @@ describe Project do
     it { should respond_to(:user) }
     it { should respond_to(:project_category) }
     it { should respond_to(:notes) }
+    it { should respond_to(:tasks)}
   end
   
 	

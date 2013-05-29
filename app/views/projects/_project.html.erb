@@ -5,7 +5,7 @@
 	<div class="box content">
 		
 		<div class="title inner">
-			<%= link_to project.title, project %> 
+			<%= link_to project.title, edit_project_path(project) %> 
 		</div>
 		<div class="description inner">
 			<%= project.description  %>
@@ -15,17 +15,12 @@
 		</div>
 	</div>
 	<div class="notes_count">
-		<% count = project.notes.count %>
-		<% if count > 0 %>
-			<span class="badge badge-warning"> <%= count %> </span>
-		<% else %>
-			<span class="badge"> <%=  count %> </span>
-		<% end %>
+		<span class="summary_box">
+			<%= link_to "#{pluralize(project.notes.count,  "note")} ",project_path(project) %>
+		</span>
 		
-		<span> 
-			<a href="<%= edit_project_path(project) %> "> 
-				<i class="icon icon-pencil"></i>
-			</a>
-			</span>
+		<span class="summary_box">
+			<%= link_to "#{ pluralize(project.tasks.count, "task")} ",project_tasks_path(project) %>
+		</span>
 	</div>
 </div>

@@ -1,0 +1,61 @@
+<h2>Tasks: <%= @project.title %></h2>
+<div class="row">
+	<div class="span4">
+		<span class="badge badge-important">Pending</span>
+		<br><br>
+		<div class="">
+			<table class="table table-bordered">
+			<tbody>
+				<% @pending_tasks.each do |task|%>
+					<tr>
+						<td  colspan="2">
+							<input type="checkbox">
+							<%= task.content %>
+						</td>
+						
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		</div>
+		
+	</div>
+	<div class="span4">
+		<span class="badge badge-warning">Started</span>
+		<br><br>
+		<div class="">
+			<table class="table table-bordered">
+			<tbody>
+				<% @started_tasks.each do |task|%>
+					<tr>
+						<td  colspan="2">
+							<input type="checkbox">
+							<%= task.content %>
+						</td>
+						
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		</div>
+	</div>
+	<div class="span4">
+		<span class="badge badge-success">Completed</span>
+		<br><br>
+		<div class="">
+			<table class="table table-bordered">
+			<tbody>
+				<% @completed_tasks.each do |task|%>
+					<tr>
+						<td  colspan="2">
+							<input type="checkbox">
+							<%= task.content %>
+						</td>
+						
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+		</div>
+	</div>
+</div>
