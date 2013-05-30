@@ -28,7 +28,7 @@ describe "TaskPages" do
 	 	it { should have_selector("h2", text: "Tasks: #{p1.title}") }
 	 	it { should have_selector("span", text: "Pending") }
 	 	it { should have_selector("span", text: "Started") }
-	 	it { should have_selector("span", text: "Done") }
+	 	it { should have_selector("span", text: "Completed") }
   	end
 
 
