@@ -20,7 +20,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 			flash[:success] = "Project Idea successfully created!"		
 		else
-			flash[:error] = "Sorry something  went wrong please try again"
+			flash[:error] = @project.errors.full_messages.to_sentence
 		end
 		redirect_to projects_url
 	end
@@ -45,7 +45,7 @@ class ProjectsController < ApplicationController
 		if @project.save
 			flash[:success] = "Project '#{@project.title}' Updated succesffuly"
 			@projects = current_user.projects
-			redirect_to projects_url
+			redirect_to projects_path
 		else
 			# flash.now[:error] = "Error. something went wrong. Please try again"
 			flash.now[:error] = @project.errors.full_messages.to_sentence

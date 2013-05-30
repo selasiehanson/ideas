@@ -34,17 +34,17 @@
 							<td> <%= note.content %> </td>
 							<td class="note_actions">
 								
-								<span class="">
+								<span class="task_form">
 									
 									<%= form_for([@project, @project.tasks.build]) do |f| %>
 										<%= f.hidden_field :note_id, :value => note.id %>
 										<%= f.hidden_field :project_id, :value => @project.id %>
-										<button type='submit' id='new_task_button_<%= "#{note.id}"%>' value="" class="btn btn-info move_to_task"> 
-											<i class="icon-white icon-chevron-right"></i>
+										<button type='submit' id='new_task_button_<%= "#{note.id}"%>' value="" class="btn move_to_task"> 
+											<i class="icon icon-chevron-right"></i>
 										</button>
 									<% end %>
 								</span>
-								<span class="label label-inverse">
+								<span class="label">
 									<a href="<%= edit_project_note_path(@project,note) %>"> 
 										<i class="icon-white icon-pencil"> </i> 
 									</a>

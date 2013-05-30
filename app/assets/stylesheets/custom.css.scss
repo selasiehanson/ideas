@@ -147,6 +147,12 @@ footer {
   }
 }
 
+table {
+  td {
+    font-size: 13px;
+  }
+}
+
 /* forms */
 
 input, textarea,  .uneditable-input {
@@ -181,6 +187,12 @@ input {
   }
 }
 
+.task_form {
+  form {
+    display : inline;
+  }
+}
+
 .action_column1 {
   width : 16px;
 }
@@ -189,7 +201,7 @@ input {
 }
 
 .note_actions {
-  width : 50px;
+  width : 75px;
   .move_to_task {
     padding: 2px;
     line-height: 10px;

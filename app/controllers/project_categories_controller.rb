@@ -12,7 +12,7 @@ class ProjectCategoriesController < ApplicationController
 		if @project_category.save
 			flash[:success] = "Project Category created"
 		else
-			flash[:error] = "Some Went wrong please try again"
+			flash[:error] = @project_category.errors.full_messages.to_sentence
 		end
 		redirect_to project_categories_url
 	end
