@@ -26,4 +26,15 @@ class Task < ActiveRecord::Base
   def status=(value)
   	 write_attribute(:status, STATUS[value])
   end
+
+  def change_status()
+    out = nil
+    if self.status == :pending
+      self.status = :started
+    elsif self.status == :started
+      self.status = :completed
+    else
+    end 
+    # self.save
+  end
 end

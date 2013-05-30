@@ -51,4 +51,13 @@ describe Task do
       Task.find_users_tasks_by_status(:completed, @user).should == [@t3]
     end
   end
+
+  describe "should upgrade the status from a previous one to the next" do
+     before { @task.change_status }
+     it "should change from pending to started" do
+       @task.status.should == :started
+       # its (:status) { should == :started}
+     end
+  end
+
 end

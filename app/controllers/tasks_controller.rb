@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
+	before_filter :fetch_project, only: [:index, :update]
 	def index
-		@project = Project.find(params[:project_id])
 		@pending_tasks = Task.find_users_tasks_by_status(:pending, current_user)
 		@started_tasks = Task.find_users_tasks_by_status(:started, current_user)
 		@completed_tasks = Task.find_users_tasks_by_status(:completed, current_user)
@@ -24,4 +24,26 @@ class TasksController < ApplicationController
 			redirect_to project_path(project)
 		end
 	end
+
+	def update
+		task = Task.find(params[:id])
+		project = Project.find(params[:project_id])
+		if params[:task][:checked]
+			 task.change_status()
+			if task.save
+				flash[:success] = "Task has been updated."
+			else
+				flash[:error] = task.error.full_messages.to_sentence
+			end
+		else
+
+		end
+		redirect_to project_tasks_path(project)
+	end
+
+	def fetch_project
+		@project = Project.find(params[:project_id])
+	end
+	
+
 end
