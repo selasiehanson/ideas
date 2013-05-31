@@ -2,9 +2,9 @@ class TasksController < ApplicationController
 
 	before_filter :fetch_project, only: [:index, :update]
 	def index
-		@pending_tasks = Task.find_users_tasks_by_status(:pending, current_user)
-		@started_tasks = Task.find_users_tasks_by_status(:started, current_user)
-		@completed_tasks = Task.find_users_tasks_by_status(:completed, current_user)
+		@pending_tasks = Task.find_users_tasks_by_status(:pending, current_user, @project)
+		@started_tasks = Task.find_users_tasks_by_status(:started, current_user, @project)
+		@completed_tasks = Task.find_users_tasks_by_status(:completed, current_user, @project)
 	end
 
 	def create

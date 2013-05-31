@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Task do
   let!(:project) { FactoryGirl.create(:project)  }
+  let!(:project2) { FactoryGirl.create(:project, user: project.user)  }
   
   before do
   	@task = FactoryGirl.create(:task, project: project)
@@ -28,27 +29,28 @@ describe Task do
   	it { should respond_to(:project) }
   end
 
-  context "retrieving tasks based on a particular project and different status" do
+  context "retrieving tasks of a user based on a particular project and status" do
 
     before do 
       @t1 = FactoryGirl.create(:task, project: project, status: :pending)
       @t2 = FactoryGirl.create(:task, project: project, status: :started)
       @t3 = FactoryGirl.create(:task, project: project, status: :completed)
+      @t4 = FactoryGirl.create(:task, project: project2, status: :pending)
       @user = project.user
     end
 
     it "should find tasks that are pending" do 
-      tt = Task.find_users_tasks_by_status(:pending, @user)
+      tt = Task.find_users_tasks_by_status(:pending, @user, project)
       # puts tt.inspect
       tt.should == [@task,@t1]
     end
 
     it "should find tasks that are started" do 
-      Task.find_users_tasks_by_status(:started, @user).should == [@t2]
+      Task.find_users_tasks_by_status(:started, @user, project).should == [@t2]
     end
 
     it "should find tasks that are completed" do 
-      Task.find_users_tasks_by_status(:completed, @user).should == [@t3]
+      Task.find_users_tasks_by_status(:completed, @user, project).should == [@t3]
     end
   end
 

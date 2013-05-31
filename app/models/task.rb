@@ -12,10 +12,11 @@ class Task < ActiveRecord::Base
   validates :status, :presence => true, :inclusion => { in: STATUS }
   validates :project_id, presence: true
 
-  scope :find_users_tasks_by_status, lambda{ |status, user|
+  scope :find_users_tasks_by_status, lambda{ |status, user, project|
   	{
   		:include => :project,
-  		:conditions => [ "tasks.status = :status AND projects.user_id = :user_id" , { :status => Task::STATUS[status], :user_id => user.id } ]
+  		:conditions => [ "tasks.status = :status AND projects.user_id = :user_id AND tasks.project_id = :project_id" , 
+        { :status => Task::STATUS[status], :user_id => user.id , :project_id => project.id} ]
   	}
   }
 
