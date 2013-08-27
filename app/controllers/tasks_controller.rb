@@ -14,6 +14,7 @@ class TasksController < ApplicationController
 			task = Task.new(content: note.content, status: :pending, project: project)
 			if task.save
 				flash[:success] = "Task created successfully"
+				note.destroy
 				redirect_to project_tasks_path(project)
 			else
 				flash[:error] = task.errors.full_messages.to_sentence
