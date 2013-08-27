@@ -11,7 +11,18 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528164908) do
+ActiveRecord::Schema.define(:version => 20130827141645) do
+
+  create_table "inputs", :force => true do |t|
+    t.text     "content"
+    t.integer  "project_id"
+    t.string   "type"
+    t.integer  "status"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "inputs", ["project_id"], :name => "index_inputs_on_project_id"
 
   create_table "notes", :force => true do |t|
     t.text     "content"

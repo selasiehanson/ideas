@@ -31,5 +31,9 @@ FactoryGirl.define do
 		project
 	end
 
-	
+	# factory :input do
+	# 	content "some title"
+	# 	status :pending
+	# 	project
+	# end
 end
