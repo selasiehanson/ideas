@@ -2,6 +2,7 @@ namespace :move_task_notes_to_input do
   desc "TODO"
   task :run => :environment do
 		notes = Note.all  	
+		
 		notes.each do	|note|
 			if note.task
 				# build a new input based on task
