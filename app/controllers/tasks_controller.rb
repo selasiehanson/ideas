@@ -8,10 +8,10 @@ class TasksController < ApplicationController
 	end
 
 	def create
-		note = Note.find(params[:task][:note_id])
 		project = Project.find(params[:task][:project_id])
+		note = Note.find(params[:task][:note_id])
 		if note
-			task = Task.new(content: note.content, note: note, status: :pending, project: project)
+			task = Task.new(content: note.content, status: :pending, project: project)
 			if task.save
 				flash[:success] = "Task created successfully"
 				redirect_to project_tasks_path(project)

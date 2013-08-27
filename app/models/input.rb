@@ -1,8 +1,9 @@
 class Input < ActiveRecord::Base
-	STATUS = { note: 0, pending: 1,  started: 2, completed: 3  }.freeze
+	STATUS = {  pending: 1,  started: 2, completed: 3 , note: 10 }.freeze
 
   belongs_to :project
   attr_accessible :content, :status, :project
+ 
 
   validates :content, presence: true
   validates :project_id, presence: true
@@ -14,6 +15,6 @@ class Input < ActiveRecord::Base
 
   def status=(value)
   	 write_attribute(:status, STATUS[value])
-  end
+  end	
 
 end

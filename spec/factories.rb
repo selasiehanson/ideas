@@ -26,7 +26,6 @@ FactoryGirl.define do
 
 	factory :task do
 		content "some title"
-		note
 		status :pending
 		project
 	end
