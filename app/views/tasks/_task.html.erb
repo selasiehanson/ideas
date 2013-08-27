@@ -6,5 +6,11 @@
 			<% end %>
 			<%= task.content %>	
 		<% end %>		
+		<div class='clearfix'>
+			<span class="pull-right times"> 
+				<em> <b>
+					<%= task.created_at.to_s(:short) %> - <%= task.updated_at.to_s(:short) %> </b> </em> 
+			</span>
+		</div>
 	</td>
 </tr>
