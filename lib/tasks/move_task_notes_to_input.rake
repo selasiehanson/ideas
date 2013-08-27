@@ -10,7 +10,7 @@ namespace :move_task_notes_to_input do
 				n.content = t.content
 				n.status = t.status
 				n.project_id =  t.project_id
-				n.type = "task"
+				n.type = "Task"
 				n.save
 			else	
 				# build a new input based on note
@@ -18,12 +18,9 @@ namespace :move_task_notes_to_input do
 				n.content = note.content
 				n.project_id = note.project_id
 				n.status = :note
-				n.type = "note"
+				n.type = "Note"
 				n.save
 			end 
-			
 		end
   end
-
-
 end
