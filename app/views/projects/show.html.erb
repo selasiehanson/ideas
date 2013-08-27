@@ -32,6 +32,7 @@
 						<tr>
 							<td class="action_column1"> <%= @notes.index(note) + 1 %>. </td>
 							<td> <%= note.content %> </td>
+							<td> <%= time_ago_in_words(note.created_at) %> ago.</td>
 							<td class="note_actions">
 								
 								<span class="task_form">

@@ -1,0 +1,10 @@
+<tr>
+	<td colspan="2">
+		<%= form_for([@project, task]) do |f| %>
+			<% unless task.status == :completed %>
+				<%= check_box("task", "checked") %>
+			<% end %>
+			<%= task.content %>	
+		<% end %>		
+	</td>
+</tr>

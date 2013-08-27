@@ -41,9 +41,8 @@ class TasksController < ApplicationController
 		redirect_to project_tasks_path(project)
 	end
 
-	def fetch_project
-		@project = Project.find(params[:project_id])
-	end
-	
-
+	private
+		def fetch_project
+			@project = Project.find(params[:project_id])
+		end
 end

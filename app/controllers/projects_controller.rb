@@ -11,7 +11,7 @@ class ProjectsController < ApplicationController
 
 	def show
 		@project = Project.find(params[:id])
-		@notes = @project.notes
+		@notes = @project.notes.order("created_at DESC")
 		@note = @project.notes.build
 	end
 

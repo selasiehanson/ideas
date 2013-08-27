@@ -10,21 +10,10 @@
 		<div class="pending">
 			<table class="table table-bordered table-striped">
 			<tbody>
-				<% @pending_tasks.each do |task|%>
-					<tr>
-						<td  colspan="2">
-							<%= form_for([@project, task]) do |f| %>
-								<%= check_box("task", "checked") %><%= task.content %>
-							<% end %>
-							
-						</td>
-						
-					</tr>
-				<% end %>
+				<%= render partial: "task", collection: @pending_tasks %>				
 			</tbody>
 		</table>
 		</div>
-		
 	</div>
 	<div class="span4">
 		<span class="badge badge-warning">Started (<%= @started_tasks.count %>)</span>
@@ -32,15 +21,7 @@
 		<div class="started">
 			<table class="table table-bordered table-striped">
 			<tbody>
-				<% @started_tasks.each do |task|%>
-					<tr>
-						<td  colspan="2">
-							<%= form_for([@project, task]) do |f| %>
-								<%= check_box("task", "checked") %><%= task.content %>
-							<% end %>
-						</td>
-					</tr>
-				<% end %>
+				<%= render partial: "task", collection: @started_tasks %>
 			</tbody>
 		</table>
 		</div>
@@ -51,14 +32,7 @@
 		<div class="completed">
 			<table class="table table-bordered table-striped">
 			<tbody>
-				<% @completed_tasks.each do |task|%>
-					<tr>
-						<td  colspan="2">
-							<%= task.content %>
-						</td>
-						
-					</tr>
-				<% end %>
+				<%= render partial: "task", collection: @completed_tasks %>
 			</tbody>
 		</table>
 		</div>
