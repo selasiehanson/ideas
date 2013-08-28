@@ -1,16 +1,14 @@
-<tr>
-	<td colspan="2">
-		<%= form_for([@project, task]) do |f| %>
-			<% unless task.status == :completed %>
-				<%= check_box("task", "checked") %>
-			<% end %>
-			<%= task.content %>	
-		<% end %>		
-		<div class='clearfix'>
-			<span class="pull-right times"> 
-				<em> <b>
-					<%= task.created_at.to_s(:short) %> - <%= task.updated_at.to_s(:short) %> </b> </em> 
-			</span>
-		</div>
-	</td>
-</tr>
+<div class="task_row">
+	<%= form_for([@project, task]) do |f| %>
+		<% unless task.status == :completed %>
+			<%= check_box("task", "checked") %>
+		<% end %>
+		<%= task.content %>	
+	<% end %>		
+	<div class='clearfix'>
+		<span class="pull-right times"> 
+			<em> <b>
+				<%= task.created_at.to_s(:short) %> - <%= task.updated_at.to_s(:short) %> </b> </em> 
+		</span>
+	</div>
+</div>

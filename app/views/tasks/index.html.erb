@@ -7,34 +7,22 @@
 	<div class="span4">
 		<span class="badge badge-important">Pending (<%= @pending_tasks.count %>)</span>
 		<br><br>
-		<div class="pending">
-			<table class="table table-bordered table-striped">
-			<tbody>
+		<div class="pending task_list">
 				<%= render partial: "task", collection: @pending_tasks %>				
-			</tbody>
-		</table>
 		</div>
 	</div>
 	<div class="span4">
 		<span class="badge badge-warning">Started (<%= @started_tasks.count %>)</span>
 		<br><br>
-		<div class="started">
-			<table class="table table-bordered table-striped">
-			<tbody>
+		<div class="started task_list">
 				<%= render partial: "task", collection: @started_tasks %>
-			</tbody>
-		</table>
 		</div>
 	</div>
 	<div class="span4">
 		<span class="badge badge-success">Completed (<%= @completed_tasks.count %>)</span>
 		<br><br>
-		<div class="completed">
-			<table class="table table-bordered table-striped">
-			<tbody>
+		<div class="completed task_list">
 				<%= render partial: "task", collection: @completed_tasks %>
-			</tbody>
-		</table>
 		</div>
 	</div>
 </div>
