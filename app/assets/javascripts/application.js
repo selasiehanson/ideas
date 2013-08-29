@@ -17,5 +17,3 @@
 //= require_tree ../angular
 //= require bootstrap
 //= require underscore.js
-//= require jquery_ujs
-//= require_tree .
