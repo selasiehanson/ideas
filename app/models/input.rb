@@ -4,7 +4,6 @@ class Input < ActiveRecord::Base
   belongs_to :project
   attr_accessible :content, :status, :project
  
-
   validates :content, presence: true
   validates :project_id, presence: true
   validates :status, :presence => true, :inclusion => { in: STATUS }
@@ -14,7 +13,10 @@ class Input < ActiveRecord::Base
   end
 
   def status=(value)
-  	 write_attribute(:status, STATUS[value])
+    unless value.is_a?(Symbol)
+      value = value.to_sym
+    end
+  	write_attribute(:status, STATUS[value])
   end	
 
 end

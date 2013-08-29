@@ -1,7 +1,10 @@
-<%= form_for([@project, @note]) do |f| %>
-	<div>
-		<%= f.label :content %>
-		<%= f.text_area :content %>
-	</div>
-	<%= f.submit  class:  "btn btn-success" %>
-<% end  %>
+<div>
+	<form class="form-vertical" ng-submit="submit()">
+		<label> Content </label>
+		<textarea ng-model="note.content"></textarea>
+		<input type="hidden" ng-model="note.project_id" 
+		ng-init="note.project_id=<%= @project.id %>">
+		<input type="submit" value="{{ buttonText }} Note" class="btn btn-success" >
+		<span class="ax-loader" visible="isSaving" text="Saving Note...."></span>
+	</form>
+</div>

@@ -4,65 +4,26 @@
 	</span>
 </h2>
 <div class="row">
-	<div class="span4">
-		<div id="note_form">
-			<legend>New note</legend>
-			<%= render "notes/note_form" %>
-		</div>
-	</div>
-	<div class="span8">
-		<div>
+	<tabs>
+		<pane title="Notes">
+			<div ng-controller="NotesController">
+				<div class="span4" >
+				<div id="note_form">
+					<legend> {{ formTitle }} note</legend>
+					<%= render "notes/note_form" %>
+				</div>
+			</div>
+			<div class="span8">
+				<%= render "notes/list" %>
+			</div>
+			</div>
+			
+		</pane>
+		<pane title="Tasks">
+			<div ng-controller="TasksController">
 
-			<% notes_count = @notes.count %>
-			<% if notes_count > 0 %>
-			 	<span class='badge badge-warning notes_count'> <%= notes_count %>  </span>
-			<% else %>
-			 	<span class='badge notes_count'>  <%= notes_count %>  </span>
-			<% end %>
-			 
-			<i>	<%= pluralize_without_count(notes_count,"Note") %> for "<%= @project.title %>" </i>
-		</div>
-
-		<br>
-		<% if @notes.any? %>
-
-			<table class="table table-bordered table-striped">
-				<% @notes.each do |note| %>
-					<% if note.content %>
-						<tr>
-							<td class="action_column1"> <%= @notes.index(note) + 1 %>. </td>
-							<td> <%= note.content %> </td>
-							<td class="time_col"> <%= time_ago_in_words(note.created_at) %> ago.</td>
-							<td class="note_actions">
-								
-								<span class="task_form">
-									
-									<%= form_for([@project, @project.tasks.build]) do |f| %>
-										<%= f.hidden_field :note_id, :value => note.id %>
-										<%= f.hidden_field :project_id, :value => @project.id %>
-										<button type='submit' id='new_task_button_<%= "#{note.id}"%>' value="" class="btn move_to_task"> 
-											<i class="icon icon-chevron-right"></i>
-										</button>
-									<% end %>
-								</span>
-								<span class="label">
-									<a href="<%= edit_project_note_path(@project,note) %>"> 
-										<i class="icon-white icon-pencil"> </i> 
-									</a>
-								</span>
-								<span class="label label-important">
-									<a id="delete_note" href="<%=project_note_path(@project,note) %>" data-confirm="Are you sure?" data-method="delete" rel="nofollow"> 
-										<i class="icon-white icon-remove"></i> 	
-									</a>
-								</span>
-							 </td>
-						</tr>
-						<% end %>
-					<% end  %>
-			</table>
-		<% else %>
-			<div>There currently no notes for this project </div>
-		<%end %>
-	</div>
+			</div>
+		</pane>
+	</tabs>
 </div>
 

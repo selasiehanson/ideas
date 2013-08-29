@@ -1,13 +1,40 @@
 Ideas::Application.routes.draw do
   
+  get "tasks/index"
+
+  get "tasks/show"
+
+  get "tasks/create"
+
+  get "tasks/update"
+
+  get "tasks/destroy"
+
+  get "notes/index"
+
+  get "notes/show"
+
+  get "notes/create"
+
+  get "notes/update"
+
+  get "notes/destroy"
+
   resources :project_categories
 
   resources :users  
   root to: 'static_pages#home'
   resources :sessions , only: [:new, :create, :destroy]
   resources :projects do
-    resources :notes
-    resources :tasks
+    resources :notes , :only => [:index, :show, :edit]
+    resources :tasks , :only => [:index, :show, :edit]
+  end
+
+  namespace :api do
+    resources :projects do
+      resources :notes, :only => [:index,:show, :create, :update, :destroy]
+      resources :taks, :only => [:index,:show, :create, :update, :destroy]
+    end
   end
 
   match '/signin', to: 'sessions#new'

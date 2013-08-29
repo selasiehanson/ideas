@@ -4,30 +4,32 @@
 	</span>
 </h2>
 <div class="row">
-	<div class="span4">
-		<span class="badge badge-important">Pending (<%= @pending_tasks.count %>)</span>
-		<br><br>
-		<div class="pending task_list">
-			<div class="list_area">
-				<%= render partial: "task", collection: @pending_tasks %>		
-			</div>		
-		</div>
-	</div>
-	<div class="span4">
-		<span class="badge badge-warning">Started (<%= @started_tasks.count %>)</span>
-		<br><br>
-		<div class="started task_list">
-			<div class="list_area">
-				<%= render partial: "task", collection: @started_tasks %>
+	<div class="list_container">
+		<div class="span4">
+			<span class="badge badge-important">Pending (<%= @pending_tasks.count %>)</span>
+			<br><br>
+			<div class="pending task_list">
+				<div class="list_area">
+					<%= render partial: "task", collection: @pending_tasks %>		
+				</div>		
 			</div>
 		</div>
-	</div>
-	<div class="span4">
-		<span class="badge badge-success">Completed (<%= @completed_tasks.count %>)</span>
-		<br><br>
-		<div class="completed task_list">
-			<div class="list_area">
-				<%= render partial: "task", collection: @completed_tasks %>
+		<div class="span4">
+			<span class="badge badge-warning">Started (<%= @started_tasks.count %>)</span>
+			<br><br>
+			<div class="started task_list">
+				<div class="list_area">
+					<%= render partial: "task", collection: @started_tasks %>
+				</div>
+			</div>
+		</div>
+		<div class="span4">
+			<span class="badge badge-success">Completed (<%= @completed_tasks.count %>)</span>
+			<br><br>
+			<div class="completed task_list">
+				<div class="list_area">
+					<%= render partial: "task", collection: @completed_tasks %>
+				</div>
 			</div>
 		</div>
 	</div>

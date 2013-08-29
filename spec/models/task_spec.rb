@@ -12,10 +12,10 @@ describe Task do
 
   it { should respond_to(:content) }
   it { should respond_to(:status) }
-  it { should respond_to(:note_id) }
+ 
   
   context "Validations" do
-	[:note_id, :content, :status].each do |attr|
+	[:content, :status].each do |attr|
 		it "requires #{attr}" do 
 			subject.send("#{attr}=", nil)
 			subject.should_not be_valid
@@ -25,7 +25,6 @@ describe Task do
   end
 
   context "Associations" do
-  	it { should respond_to(:note) }
   	it { should respond_to(:project) }
   end
 
@@ -42,7 +41,7 @@ describe Task do
     it "should find tasks that are pending" do 
       tt = Task.find_users_tasks_by_status(:pending, @user, project)
       # puts tt.inspect
-      tt.should == [@task,@t1]
+      tt.should == [@t1, @task]
     end
 
     it "should find tasks that are started" do 

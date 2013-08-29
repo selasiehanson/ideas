@@ -1,0 +1,22 @@
+'use strict';
+
+var app = angular.module('app', 
+	[
+		'ngResource', 
+		'models',
+		'date_component',
+		'helpers',
+		'select2_component',
+		'messenger',
+		"charts", 
+		"dialog",
+		"widgetbox_component",
+		"tab_component",
+		"loader_component"
+]);
+
+app.constant ("apiPrefix", "/api");
+
+app.config(["$httpProvider", function(provider) {
+   provider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+}]);

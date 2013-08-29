@@ -1,4 +1,4 @@
-require 'spec_helper'
+rerequire 'spec_helper'
 
 describe ProjectCategory do
   let(:user) { FactoryGirl.create(:user) }

@@ -1,0 +1,37 @@
+	<div>
+		<span class='badge badge-warning notes_count' ng-show="hasNotes"> {{ notes.length }}</span>
+		<span class='badge notes_count' ng-hide="hasNotes"> 0 </span> 
+		<i>
+			<ng-pluralize count="notes.length"
+                 when="{
+                     'one': '1 Note',
+                     'other': '{} Notes'}">
+			</ng-pluralize>
+		</i>
+	</div>
+	<br>
+	<table class="table table-bordered table-striped" ng-show="hasNotes">
+		<tr ng-repeat="note in notes">
+			<td class="action_column1"> {{ $index + 1}}. </td>
+			<td> {{ note.content }} </td>
+			<td class="time_col">  {{ note.created_at | date:'short' }} </td>
+			<td class="note_actions">
+				<span class="task_form">									
+						<button type='submit' class="btn move_to_task" ng-click="createTask(note)"> 
+							<i class="icon icon-chevron-right"></i>
+						</button>
+				</span>
+				<span class="label">
+					<a href="" ng-click="editNote(note)"> 
+						<i class="icon-white icon-pencil"> </i> 
+					</a>
+				</span>
+				<span class="label label-important">
+					<a id="delete_note" href="" ng-click="deleteNote(note, $index)"> 
+						<i class="icon-white icon-remove"></i> 	
+					</a>
+				</span>
+			 </td>
+		</tr>
+	</table>
+	<div ng-hide="hasNotes">There currently no notes for this project </div>

@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 $ ->
 	submit_form = ->
 		if($(this).is(':checked'))
@@ -15,7 +11,7 @@ $ ->
 	
 	resize_task_list = ->
 		listArea = $(".task_list .list_area")
-		newHeight = parseInt($(window).height()) - 100
+		newHeight = parseInt($(window).height()) - 160
 		listArea.css("max-height", newHeight + "px")
 		console.log newHeight
 		return

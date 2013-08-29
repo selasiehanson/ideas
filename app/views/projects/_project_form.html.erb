@@ -12,4 +12,5 @@
 		<%= collection_select(:project, :project_category_id, @project_categories, :id, :name) %>
 	</div>
 	<%= f.submit  class: "btn btn-success" %>
+	<span class="ax-loader" text="saving please wait"> </span>
 	<% end %>	
