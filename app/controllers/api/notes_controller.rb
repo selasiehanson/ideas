@@ -1,22 +1,23 @@
 class Api::NotesController < ApplicationController
-  before_filter :fetch_project_notes, :only => [:index, :create]
+  before_filter :fetch_project, :only => [:index, :create, :show]
 
   def index
-    notes = @notes.order("created_at DESC")
+    notes = @project.notes.order("created_at DESC")
     render :json =>  { data: notes, message: "", success: true, total: notes.length }
   end
 
   def show
+    render :json => { data: [@project], success: true, message: ""}
   end
 
   def create
-    @note = @notes.build(params[:note])
+    @note = @project.notes.build(params[:note])
     success =  false
     if @note.save
       msg = "Note successfully created."
       success = true
     else
-      msg = err_msg
+      msg = err_msg(@note)
     end
     render :json => { data: [@note], message: msg , success: success }
   end
@@ -28,7 +29,7 @@ class Api::NotesController < ApplicationController
       msg = "Note updated successfully"
       success = true
     else
-      msg = err_msg
+      msg = err_msg(@note)
     end
     render :json => { data: [@note], message: msg , success: success }
   end
@@ -46,15 +47,15 @@ class Api::NotesController < ApplicationController
   
 
   private 
-    def fetch_project_notes
-      @notes = Project.find(params[:project_id]).notes
+    def fetch_project
+      @project = Project.find(params[:project_id])
     end
 
     def success_message
       
     end
 
-    def err_msg
-      "Error. #{@note.errors.full_messages.to_sentence}"
+    def err_msg(obj)
+      "Error. #{obj.errors.full_messages.to_sentence}"
     end
 end
