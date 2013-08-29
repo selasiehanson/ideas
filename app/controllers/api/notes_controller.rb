@@ -52,10 +52,5 @@ class Api::NotesController < ApplicationController
     end
 
     def success_message
-      
-    end
-
-    def err_msg(obj)
-      "Error. #{obj.errors.full_messages.to_sentence}"
     end
 end

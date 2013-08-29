@@ -31,7 +31,17 @@ NotesController = ($scope, Note, Task, MSG)->
 		return
 	
 	$scope.createTask = (note)->
-
+		_newTask = angular.copy(note)
+		_newTask.note_id = _newTask.id
+		delete _newTask.id 
+		
+		task =  new Task(_newTask)
+		task.$save (res)=>
+			if res.success
+				idx = $scope.notes.indexOf(note)
+				$scope.notes.splice(idx, 1)
+				MSG.success(res.message)
+			return
 		return
 	
 	$scope.editNote =  (note) ->

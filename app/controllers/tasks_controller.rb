@@ -7,25 +7,6 @@ class TasksController < ApplicationController
 		@completed_tasks = Task.find_users_tasks_by_status(:completed, current_user, @project)
 	end
 
-	def create
-		project = Project.find(params[:task][:project_id])
-		note = Note.find(params[:task][:note_id])
-		if note
-			task = Task.new(content: note.content, status: :pending, project: project)
-			if task.save
-				flash[:success] = "Task created successfully"
-				note.destroy
-				redirect_to project_tasks_path(project)
-			else
-				flash[:error] = task.errors.full_messages.to_sentence
-				redirect_to project_path(project)
-			end
-		else
-			flash[:error] = "Sorry, task could not be created out of this project. Please try again."
-			redirect_to project_path(project)
-		end
-	end
-
 	def update
 		task = Task.find(params[:id])
 		project = Project.find(params[:project_id])

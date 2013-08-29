@@ -23,7 +23,7 @@ app.factory("ProjectCategory", function ($resource){
 });
 
 app.factory("Task", function ($resource){
-	return $resource('api/tasks/:id', {id : '@id'}, {	    
+	return $resource('../api/projects/:project_id/tasks/:id', {project_id : "@project_id",id : '@id'}, {	    
 		query: { method: 'GET', isArray: false},
 	    update : { method : 'PUT'}
 	});

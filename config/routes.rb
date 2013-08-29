@@ -33,7 +33,7 @@ Ideas::Application.routes.draw do
   namespace :api do
     resources :projects do
       resources :notes, :only => [:index,:show, :create, :update, :destroy]
-      resources :taks, :only => [:index,:show, :create, :update, :destroy]
+      resources :tasks, :only => [:index,:show, :create, :update, :destroy]
     end
   end
 
