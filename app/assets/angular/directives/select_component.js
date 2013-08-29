@@ -1,4 +1,4 @@
-angular.module("select2_component",[]).directive("axSelect", function ($compile, $rootScope){
+angular.module("select2_component",[]).directive("axSelect", ["$compile", "$rootScope",function ($compile, $rootScope){
 	var linkFn;
 	linkFn = function (scope,element,attrs, ngModel){
 		var sel = $(element).find("select");
@@ -102,4 +102,4 @@ angular.module("select2_component",[]).directive("axSelect", function ($compile,
 		restrict : "E",
 		link : linkFn
 	}	
-});
+}]);

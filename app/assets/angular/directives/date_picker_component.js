@@ -1,4 +1,4 @@
-angular.module("date_component",["helpers"]).directive("axDate", function ($filter,DateHelper){
+angular.module("date_component",["helpers"]).directive("axDate", [ "$filter","DateHelper",function ($filter,DateHelper){
 	window.dd  = $filter;
 	var defaultFormat = "dd-mm-yyyy";
 	
@@ -46,4 +46,4 @@ angular.module("date_component",["helpers"]).directive("axDate", function ($filt
 		restrict : "C",
 		link : linkFn 
 	}	
-});
+}]);

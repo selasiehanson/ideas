@@ -1,25 +1,6 @@
 Ideas::Application.routes.draw do
   
-  get "tasks/index"
-
-  get "tasks/show"
-
-  get "tasks/create"
-
-  get "tasks/update"
-
-  get "tasks/destroy"
-
-  get "notes/index"
-
-  get "notes/show"
-
-  get "notes/create"
-
-  get "notes/update"
-
-  get "notes/destroy"
-
+  
   resources :project_categories
 
   resources :users  

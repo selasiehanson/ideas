@@ -1,6 +1,6 @@
 var app  = angular.module("loader_component", []);
 
-app.directive("axLoader", function (){
+app.directive("axLoader", [function (){
 
 	var loader = {
 		restrict: "C",
@@ -12,4 +12,4 @@ app.directive("axLoader", function (){
 		replace: true
 	}
 	return loader;
-})
+}]);

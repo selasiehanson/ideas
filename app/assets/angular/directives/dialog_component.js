@@ -1,6 +1,6 @@
 var app = angular.module("dialog", []);
 
-app.directive("axDialog", function (){
+app.directive("axDialog", [function (){
 
 	var linkFn = function (scope, element, attrs){
 
@@ -35,4 +35,4 @@ app.directive("axDialog", function (){
 		transclude: true,
 		template: template.join("")
 	}
-});
+}]);

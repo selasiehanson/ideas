@@ -1,5 +1,5 @@
 var chartModule = angular.module("charts",[]);
-chartModule.directive("axPieChart", function ($q, $rootScope){
+chartModule.directive("axPieChart", ["$q" , "$rootScope",function ($q, $rootScope){
 	var linkFn =  function (scope, element, attrs, ngModel){
 		var pieChart;
 		
@@ -108,9 +108,9 @@ chartModule.directive("axPieChart", function ($q, $rootScope){
 		require: '?ngModel',
 		link : linkFn
 	}
-});
+}]);
 
-chartModule.directive("axBasicChart", function ($q, $rootScope){
+chartModule.directive("axBasicChart", ["$q" , "$rootScope",function ($q, $rootScope){
 	var gAttrs;
 	var linkFn =  function (scope, element, attrs, ngModel){
 		gAttrs = attrs;
@@ -232,4 +232,4 @@ chartModule.directive("axBasicChart", function ($q, $rootScope){
 		require: '?ngModel',
 		link : linkFn
 	}
-});
+}]);

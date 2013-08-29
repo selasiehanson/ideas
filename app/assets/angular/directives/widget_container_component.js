@@ -1,4 +1,4 @@
-angular.module("widgetbox_component",[]).directive("axWbox", function (){
+angular.module("widgetbox_component",[]).directive("axWbox", [function (){
 		var compileFn;
 		
 		compileFn =  function (element,attrs){
@@ -69,4 +69,4 @@ angular.module("widgetbox_component",[]).directive("axWbox", function (){
 			compile : compileFn
 		}
 
-	})
+	}])
