@@ -1,4 +1,4 @@
-angular.module("messenger",[]).directive("axMsg", function ($rootScope){
+angular.module("messenger",[]).directive("axMsg", ["$rootScope", function ($rootScope){
 	var linkFn = function (scope, element, attrs){
 
 		$rootScope.$on('incomingMessage', function (event, args){
@@ -36,4 +36,4 @@ angular.module("messenger",[]).directive("axMsg", function ($rootScope){
 			type: "@"
 		}
 	}
-});
+}]);
