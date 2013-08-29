@@ -88,4 +88,4 @@ NotesController = ($scope, Note, Task, MSG)->
 	
 	return
 		
-app.controller "NotesController", NotesController
+app.controller "NotesController",["$scope", "Note", "Task", "MSG", NotesController]
