@@ -1,50 +1,5 @@
 // Provide the wiring information in a module
-angular.module('helpers', []).
-  factory('MSG', function($window) {
-        var MSG =  {
-          msgBox : null,
-          msgBoxes : [],
-          show : function (message, status, options){
-            var status = status ? status: "error";
-            options = options || {}
-
-            var wait = options.wait || null;
-            var callback = options.callback || null;
-            var layout = options.layout || "top";
-
-            var x = noty({
-              text: message,
-              type:status,
-              dismissQueue: true,
-              layout: layout,
-              theme: 'defaultTheme'
-            });
-
-
-            MSG.msgBoxes.push(x)
-
-            if(callback){
-                callback();
-            }
-            
-            if(!wait){
-                setTimeout(function (){ 
-                if(status !== "error"){
-                  MSG.hide()
-                }
-              },8000);  
-            }
-            
-          }, 
-          hide : function (){
-            MSG.msgBoxes.forEach(function (box){
-                if(box)
-                  box.close();
-            });
-          }
-        };
-    return MSG;
-  }).factory("ARR",function (){
+angular.module('helpers', []).factory("ARR",function (){
     return {
       sort : function  (arr, fieldToUse) {
         var name  = fieldToUse || "name";
