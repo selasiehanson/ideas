@@ -1,5 +1,6 @@
 // Provide the wiring information in a module
-angular.module('helpers', []).factory("ARR",function (){
+angular.module('helpers', []).
+ factory("ARR",function (){
     return {
       sort : function  (arr, fieldToUse) {
         var name  = fieldToUse || "name";
