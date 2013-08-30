@@ -8,6 +8,9 @@ NotesController = ($scope, Note, Task, MSG)->
 	$scope.personCount = 1
 
 
+	$scope.clear = ()->
+		defaults()
+
 	$scope.submit = ()->
 		$scope.isSaving = true
 		note = new Note($scope.note)
@@ -72,6 +75,7 @@ NotesController = ($scope, Note, Task, MSG)->
 		if res.success
 			$scope.notes.splice index, 1
 		return
+	
 	defaults = ()->
 		$scope.buttonText = "Create"
 		$scope.formTitle = "New"
@@ -83,6 +87,7 @@ NotesController = ($scope, Note, Task, MSG)->
 				$scope.hasNotes = true
 			return
 		return
+	
 	setTimeout(getNotes, 100)
 	defaults()
 	

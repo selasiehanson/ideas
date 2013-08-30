@@ -5,6 +5,7 @@
 		<input type="hidden" ng-model="note.project_id" 
 		ng-init="note.project_id=<%= @project.id %>">
 		<input type="submit" value="{{ buttonText }} Note" class="btn btn-success" >
+		<input type="submit" value="Cancel" class="btn" ng-click="clear()">
 		<span class="ax-loader" visible="isSaving" text="Saving Note...."></span>
 	</form>
 </div>
