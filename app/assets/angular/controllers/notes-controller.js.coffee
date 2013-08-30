@@ -1,6 +1,6 @@
 app = angular.module "app"
 
-NotesController = ($scope, Note, Task, MSG)->
+app.controller "NotesController",["$scope", "Note", "Task", "MSG", ($scope, Note, Task, MSG)->
 	$scope.hasNotes = false;
 	$scope.note = {}
 	$scope.notes = []
@@ -91,6 +91,4 @@ NotesController = ($scope, Note, Task, MSG)->
 	setTimeout(getNotes, 100)
 	defaults()
 	
-	return
-		
-app.controller "NotesController",["$scope", "Note", "Task", "MSG", NotesController]
+	return]
