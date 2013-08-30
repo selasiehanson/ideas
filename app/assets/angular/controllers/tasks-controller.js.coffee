@@ -1,5 +1,5 @@
-app =  angular.module("app")
+# app =  angular.module("app")
 
-TasksController = ($scope,Task, MSG)->
-	return
-app.controller "TasksController", [TasksController]
+# TasksController = ($scope,Task, MSG)->
+# 	return
+# app.controller "TasksController", [TasksController]
