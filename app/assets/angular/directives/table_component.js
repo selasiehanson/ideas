@@ -1,5 +1,5 @@
 var app = angular.module("table_component", [])
-app.directive("axTable", function ($compile){
+app.directive("axTable", [function ($compile){
 	// var options = scope.$eval(iAttrs.config);
 
 	var linkFn = function (scope,element, attrs, ctrl) {
@@ -73,4 +73,4 @@ app.directive("axTable", function ($compile){
 
 		}
 	}
-});
+}]);

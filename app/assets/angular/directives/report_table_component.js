@@ -1,5 +1,5 @@
 var app = angular.module("rep_table_component", [])
-app.directive("repTable", function ($compile){
+app.directive("repTable", [function ($compile){
 	var linkFn = function (scope,element, attrs, ctrl) {
 		scope.$on("repDataChanged", function (ev, args){
 			updateView();
@@ -51,4 +51,4 @@ app.directive("repTable", function ($compile){
 		replace: true,
 		link : linkFn
 	}
-});
+}]);

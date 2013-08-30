@@ -2,7 +2,7 @@
 
 var app = angular.module('app')
 
-app.factory("MSG", function ($rootScope){
+app.factory("MSG", ["$rootScope",function ($rootScope){
 	return {
 		show : function (message, status){
 			var scope = $rootScope.$new();
@@ -26,9 +26,9 @@ app.factory("MSG", function ($rootScope){
 			scope.$emit("incomingMessage", { message: "", status: null, show: false })
 		}
 	}
-});
+}]);
 
-app.factory("Aggregate", function (){
+app.factory("Aggregate", [function (){
 	return {
 		SUM : function (items,field ,type){
 			type = type || ""
@@ -49,6 +49,6 @@ app.factory("Aggregate", function (){
 			return total;
 		}
 	}
-})
+}])
 
 
