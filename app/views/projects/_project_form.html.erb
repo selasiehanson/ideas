@@ -9,14 +9,14 @@
 		<div class="control-group">
 			<label class="control-label"> Description </label>
 			<div class="controls">
-				<textarea cols="40" rows="5" ng-model="project.description"></textarea>
+				<textarea cols="40" rows="7" ng-model="project.description"></textarea>
 			</div>
 		</div>
 		<div class="control-group">
 			<label class="control-label"> Project Category </label>
 			<div class="controls">
 				<select 
-					class="span4"
+					class=""
 					ng-options="cat.id as cat.name for cat in userProjectsCategories"
 					ng-model="project.project_category_id">
 				</select>

@@ -169,7 +169,7 @@ input {
 
 #the_project_form{
   width: 400px;
-  input[type="text"] {
+  input[type="text"], select {
     width: 350px;
   }
 
@@ -181,10 +181,17 @@ input {
 #wrapper{
   width: 540px; 
 }
+
 #note_form{
+  width: 31%;
+
   textarea {
     height : 150px;
   }
+}
+
+#notes_list {
+  width: 65%;
 }
 
 .task_form {

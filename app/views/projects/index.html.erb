@@ -16,13 +16,11 @@
 		</pane>
 		<pane title="Notes">
 			<div ng-controller="NotesController" class="clearfix">
-				<div class="span4" >
-					<div id="note_form">
-						<legend> {{ formTitle }} note</legend>
+				<div class="pull-left" id="note_form">
+						<legend> {{ formTitle }} note </legend>
 						<%= render "notes/note_form" %>
-					</div>
 				</div>
-				<div class="span8">
+				<div class="pull-right" id="notes_list">
 						<%= render "notes/list" %>	
 				</div>
 			</div>
