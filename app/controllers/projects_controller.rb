@@ -9,13 +9,6 @@ class ProjectsController < ApplicationController
 	end
 
 	def create
-		@project = current_user.projects.build(params[:project])
-		if @project.save
-			flash[:success] = "Project Idea successfully created!"		
-		else
-			flash[:error] = @project.errors.full_messages.to_sentence
-		end
-		redirect_to projects_url
 	end
 
 	def destroy

@@ -22,7 +22,7 @@ class Api::TasksController < ApplicationController
         msg = "Task created successfully"
         success = true
       else
-        msg =  err_msg(task)
+        msg = err_msg(task)
       end
     else
       msg = "Sorry, task could not be created out of this project. Please try again."

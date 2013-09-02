@@ -4,8 +4,6 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 	$scope.hasNotes = false;
 	$scope.note = {}
 	$scope.notes = []
-	$scope.len = 1
-	$scope.personCount = 1
 	$scope.location = location
 	
 	$scope.data = Data
@@ -59,16 +57,12 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		note.$delete (res)=>
 			afterDelete(res, index)
 		return
-	
-	$scope.$watch "data.title", (val)->
-		console.log(val)
+
 
 	$scope.$watch "data.project_id", (val)->
 		if val
 			getNotes(val)
 		return
-		
-
 
 	afterSave = (res)->
 		notify(res.success, res.message)
@@ -93,7 +87,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		# $scope.note.content = ""
 
 	getNotes = (project_id)->
-		Note.query { project_id: project_id },(res)=>
+		Note.query { project_id: project_id },(res)->
 			$scope.notes = res.data
 			if $scope.notes.length > 0
 				$scope.hasNotes = true
@@ -101,5 +95,4 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		return
 	
 	defaults()
-	window.loc = location
 	return]
