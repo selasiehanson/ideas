@@ -1,13 +1,14 @@
 app = angular.module "app"
 
-app.controller "NotesController",["$scope", "Note", "Task", "MSG", ($scope, Note, Task, MSG)->
+app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", "Data", ($scope, Note, Task, MSG, location, Data)->
 	$scope.hasNotes = false;
 	$scope.note = {}
 	$scope.notes = []
 	$scope.len = 1
 	$scope.personCount = 1
-
-
+	$scope.location = location
+	
+	$scope.data = Data
 	$scope.clear = ()->
 		defaults()
 
@@ -58,6 +59,16 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", ($scope, Note
 		note.$delete (res)=>
 			afterDelete(res, index)
 		return
+	
+	$scope.$watch "data.title", (val)->
+		console.log(val)
+
+	$scope.$watch "data.project_id", (val)->
+		if val
+			getNotes(val)
+		return
+		
+
 
 	afterSave = (res)->
 		notify(res.success, res.message)
@@ -79,16 +90,16 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", ($scope, Note
 	defaults = ()->
 		$scope.buttonText = "Create"
 		$scope.formTitle = "New"
+		# $scope.note.content = ""
 
-	getNotes = () ->
-		Note.query { project_id: $scope.note.project_id },(res)=>
+	getNotes = (project_id)->
+		Note.query { project_id: project_id },(res)=>
 			$scope.notes = res.data
 			if $scope.notes.length > 0
 				$scope.hasNotes = true
 			return
 		return
 	
-	setTimeout(getNotes, 100)
 	defaults()
-	
+	window.loc = location
 	return]

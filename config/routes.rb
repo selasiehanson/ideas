@@ -1,7 +1,35 @@
 Ideas::Application.routes.draw do
   
   
-  resources :project_categories
+  get "tasks/index"
+
+  get "tasks/show"
+
+  get "tasks/create"
+
+  get "tasks/update"
+
+  get "tasks/destroy"
+
+  get "project_categories/index"
+
+  get "project_categories/show"
+
+  get "project_categories/create"
+
+  get "project_categories/update"
+
+  get "project_categories/destroy"
+
+  get "projects/index"
+
+  get "projects/show"
+
+  get "projects/create"
+
+  get "projects/update"
+
+  get "projects/destroy"
 
   resources :users  
   root to: 'static_pages#home'
@@ -12,6 +40,7 @@ Ideas::Application.routes.draw do
   end
 
   namespace :api do
+    resources :project_categories, :only => [:index, :show,  :creat, :update, :destroy]
     resources :projects do
       resources :notes, :only => [:index,:show, :create, :update, :destroy]
       resources :tasks, :only => [:index,:show, :create, :update, :destroy]

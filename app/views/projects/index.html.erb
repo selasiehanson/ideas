@@ -1,12 +1,37 @@
+<br>
 <div>
-	<div class="pull-left">
-		<div id="the_project_form">
-			<legend>New Project Idea</legend>
-			<%= render "project_form" %>
-		</div>
-	</div>
-	<div class="pull-right" id="wrapper">
-		<%= render 'list' %>
-	</div>
+	<tabs>
+		<pane title="Projects">
+			<div class="clearfix">
+				<div ng-controller="ProjectsController">
+					<div id="the_project_form" class="pull-left">
+						<legend>New Project Idea</legend>
+						<%= render "project_form" %>
+					</div>
+					<div class="pull-right" id="wrapper">
+				  	<%=  render "list" %>
+					</div>
+				</div>
+			</div>
+		</pane>
+		<pane title="Notes">
+			<div ng-controller="NotesController" class="clearfix">
+				<div class="span4" >
+					<div id="note_form">
+						<legend> {{ formTitle }} note</legend>
+						<%= render "notes/note_form" %>
+					</div>
+				</div>
+				<div class="span8">
+						<%= render "notes/list" %>	
+				</div>
+			</div>
+		</pane>
+		<pane title="Tasks">
+			<div ng-controller="TasksController">
+				<%= render "tasks/list" %>
+			</div>
+		</pane>
+	</tabs>
 </div>
 

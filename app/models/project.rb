@@ -10,4 +10,5 @@ class Project < ActiveRecord::Base
   has_many :notes
   has_many :tasks
   default_scope order: 'projects.created_at DESC'
+
 end

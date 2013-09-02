@@ -1,16 +1,28 @@
-<%= form_for(@project) do |f| %>
-	<div>
-		<%= f.label :title %>
-		<%= f.text_field :title %>
-	</div>
-	<div>
-		<%= f.label :description %>
-		<%= f.text_area :description %>
-	</div>
-	<div>
-		<%= f.label :project_category  %>
-		<%= collection_select(:project, :project_category_id, @project_categories, :id, :name) %>
-	</div>
-	<%= f.submit  class: "btn btn-success" %>
-	<span class="ax-loader" text="saving please wait"> </span>
-	<% end %>	
+<div>
+	<form class="form-vertical" ng-submit="submit()">
+		<div class="control-group">
+			<label class="control-label"> Title </label>
+			<div class="controls">
+				<input type="text" ng-model="project.title">	
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"> Description </label>
+			<div class="controls">
+				<textarea cols="40" rows="20" ng-model="project.description"></textarea>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label"> Project Category </label>
+			<div class="controls">
+				<select 
+					ng-options="cat.id as cat.name for cat in userProjectsCategories"
+					ng-model="project.project_category_id">
+				</select>
+			</div>
+		</div>
+		<input type="submit" value="{{ buttonText }} Project" class="btn btn-success" >
+		<input type="button" value="Cancel" class="btn" ng-click="clear()">
+		<span class="ax-loader" visible="isSaving" text="Saving Project...."></span>
+	</form>
+</div>

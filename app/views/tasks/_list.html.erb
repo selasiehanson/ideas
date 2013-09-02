@@ -1,0 +1,59 @@
+<h2>Tasks: {{ project.title }}</h2>
+<div class="row">
+	<div class="list_container">
+		<div class="span4">
+			<span class="badge badge-important">Pending {{ pending_tasks.length }}</span>
+			<br><br>
+			<div class="pending task_list">
+				<div class="list_area">
+					<div ng-repeat="task in pendingTasks">
+						<div class="task_row">
+							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
+							<div class='clearfix'>
+								<span class="pull-right times"> 
+									<em> <b> {{ task.created_at }} - {{ task.updated_at }} </b> </em> 
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>		
+			</div>
+		</div>
+		<div class="span4">
+			<span class="badge badge-warning">Started {{ started_tasks.length }} </span>
+			<br><br>
+			<div class="started task_list">
+				<div class="list_area">
+					<div ng-repeat="task in startedTasks">
+						<div class="task_row">
+							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
+							<div class='clearfix'>
+								<span class="pull-right times"> 
+									<em> <b> {{ task.created_at }} - {{ task.updated_at }} </b> </em> 
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="span4">
+			<span class="badge badge-success">Completed {{ completed_tasks.length }} </span>
+			<br><br>
+			<div class="completed task_list">
+				<div class="list_area">
+					<div ng-repeat="task in completedTasks">
+						<div class="task_row">
+							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
+							<div class='clearfix'>
+								<span class="pull-right times"> 
+									<em> <b> {{ task.created_at }} - {{ task.updated_at }} </b> </em> 
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

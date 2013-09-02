@@ -2,7 +2,12 @@ class ApplicationController < ActionController::Base
   	protect_from_forgery
   	include SessionsHelper
 
-  	def err_msg(obj)
-      "Error. #{obj.errors.full_messages.to_sentence}"
-    end
+
+  	protected
+	    def fetch_project
+	      @project = Project.find(params[:project_id])
+	    end
+	  	def err_msg(obj)
+	      "Error. #{obj.errors.full_messages.to_sentence}"
+	    end
 end

@@ -31,19 +31,8 @@ angular.module('helpers', []).
         return out;
        }
      }
- }]).factory("UrlResolver", [function (){
-     
-     return {
-       setBasePath : function (basePath){
-         this.pathRoot = basePath;
-       },
-       resolve : function (path){
-          //return this.pathRoot + path
-          return path;   
-         //return window.location.origin + "/jms/public/" + path
-       }
-     }
-   }]).factory("DateHelper", ["$filter",function ($filter){
+ }])
+ .factory("DateHelper", ["$filter",function ($filter){
        
        return {
          _default : "dd-mm-yyyy",

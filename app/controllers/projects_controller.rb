@@ -3,10 +3,6 @@ class ProjectsController < ApplicationController
 	before_filter :correct_project_owner, only: [:edit, :update, :show]
 	
 	def index	
-		@projects = current_user.projects
-		#this is to allow us to create a new project
-		@project = Project.new	
-		@project_categories = current_user.project_categories	
 	end
 
 	def show
