@@ -1,6 +1,4 @@
-	<div>
-		<span class='badge badge-warning notes_count' ng-show="hasNotes"> {{ notes.length }}</span>
-		<span class='badge notes_count' ng-hide="hasNotes"> 0 </span> 
+<h2>
 		<i>
 			<ng-pluralize count="notes.length"
                  when="{
@@ -8,7 +6,8 @@
                      'other': '{} Notes'}">
 			</ng-pluralize>
 		</i>
-</div>
+	<span class="pull-right"> {{ data.project.title }} </span>
+</h2>
 <br>
 <table class="table table-bordered table-striped" ng-show="hasNotes">
 	<tr ng-repeat="note in notes">

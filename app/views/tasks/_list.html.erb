@@ -1,4 +1,4 @@
-<h2>Tasks: {{ data.project.title }}</h2>
+<h2 class="clearfix">Tasks <span class="pull-right"> {{ data.project.title }}</span>	</h2>
 <div class="row">
 	<div class="list_container">
 		<div class="span4">
@@ -11,7 +11,7 @@
 							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
-									<em> <b> {{ task.created_at }} - {{ task.updated_at }} </b> </em> 
+									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at  | date:'short' }} </b> </em> 
 								</span>
 							</div>
 						</div>
@@ -29,7 +29,7 @@
 							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
-									<em> <b> {{ task.created_at }} - {{ task.updated_at }} </b> </em> 
+									<em> <b> {{ task.created_at  | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
 								</span>
 							</div>
 						</div>
@@ -47,7 +47,7 @@
 							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
-									<em> <b> {{ task.created_at }} - {{ task.updated_at }} </b> </em> 
+									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
 								</span>
 							</div>
 						</div>
