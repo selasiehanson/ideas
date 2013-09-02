@@ -14,18 +14,18 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		$scope.isSaving = true
 		note = new Note($scope.note)
 		if $scope.note.id
-			note.$update (res)=>
+			note.$update (res)->
 				$scope.isSaving =  false
 				afterSave(res)				
 				if res.success
-					_note = _.find $scope.notes, (item)=>
+					_note = _.find $scope.notes, (item)->
 						item.id ==  $scope.note.id
 					idx = $scope.notes.indexOf(_note)
 					$scope.notes[idx] = res.data[0]
 					defaults()
 
 		else
-			note.$save (res)=>
+			note.$save (res)->
 				$scope.isSaving =  false
 				afterSave(res)
 				if res.success
@@ -38,7 +38,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		delete _newTask.id 
 		
 		task =  new Task(_newTask)
-		task.$save (res)=>
+		task.$save (res)->
 			if res.success
 				idx = $scope.notes.indexOf(note)
 				$scope.notes.splice(idx, 1)
@@ -46,15 +46,15 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 			return
 		return
 	
-	$scope.editNote =  (note) ->
+	$scope.editNote =  (note)->
 		$scope.note = note
 		$scope.buttonText = "Update"
 		$scope.formTitle = "Edit"
 		return
 
-	$scope.deleteNote = (_note , index) ->
+	$scope.deleteNote = (_note , index)->
 		note = new Note(_note)
-		note.$delete (res)=>
+		note.$delete (res)->
 			afterDelete(res, index)
 		return
 
@@ -69,7 +69,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		$scope.note.content = ""
 		return
 
-	notify = (status, message) ->
+	notify = (status, message)->
 		if status
 			MSG.success(message)
 		else

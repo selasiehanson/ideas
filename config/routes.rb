@@ -34,13 +34,14 @@ Ideas::Application.routes.draw do
   resources :users  
   root to: 'static_pages#home'
   resources :sessions , only: [:new, :create, :destroy]
+  resources :project_categories, :only => [:index, :show, :edit]
   resources :projects do
     resources :notes , :only => [:index, :show, :edit]
     resources :tasks , :only => [:index, :show, :edit]
   end
 
   namespace :api do
-    resources :project_categories, :only => [:index, :show,  :creat, :update, :destroy]
+    resources :project_categories, :only => [:index, :show,  :create, :update, :destroy]
     resources :projects do
       resources :notes, :only => [:index,:show, :create, :update, :destroy]
       resources :tasks, :only => [:index,:show, :create, :update, :destroy]
