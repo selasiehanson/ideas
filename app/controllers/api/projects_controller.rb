@@ -1,6 +1,7 @@
 class Api::ProjectsController < ApplicationController
   before_filter :signed_in_user, only: [:index, :edit, :update, :show, :destroy]
   before_filter :fetch_project, only: [:show, :update, :destroy]
+
   def index
     projects = current_user.projects
     render :json => { data: projects, message: "", success: true, total: projects.length }
@@ -16,7 +17,7 @@ class Api::ProjectsController < ApplicationController
       msg = "Project Idea successfully created!"    
       success = true
     else
-      msg = @project.errors.full_messages.to_sentence
+      msg = err_msg(@project)
     end
 
     render :json => { data: [@project ], message: msg, success: success}

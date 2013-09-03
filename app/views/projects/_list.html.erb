@@ -18,7 +18,7 @@
 	</div>
 	<div class="project" ng-repeat="project in projects"> 
 		<div class="box action"> 
-			{{ $index + 1}}.
+			{{ $index + 1 }}.
 		</div>
 		<div class="box content">
 			<div class="title inner">
@@ -34,10 +34,10 @@
 		</div>
 		<div class="notes_count">
 			<span class="summary_box">
-				<a href="" ng-click="viewNotes(project)"> Notes </a>
+				<a href="" ng-click="viewNotes(project)"> {{ project.notes.length }} Notes </a>
 			</span>
 			<span class="summary_box">
-				<a href="" ng-click="viewTasks(project)"> Tasks </a>
+				<a href="" ng-click="viewTasks(project)"> {{ project.tasks.length }} Tasks </a>
 			</span>
 		</div>
 	</div>

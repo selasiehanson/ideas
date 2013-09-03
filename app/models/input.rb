@@ -1,7 +1,6 @@
 class Input < ActiveRecord::Base
 	STATUS = {  pending: 1,  started: 2, completed: 3 , note: 10 }.freeze
 
-  belongs_to :project
   attr_accessible :content, :status, :project
  
   validates :content, presence: true

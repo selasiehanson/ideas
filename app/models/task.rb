@@ -1,5 +1,7 @@
 class Task < Input
-  
+
+  belongs_to :project
+    
   scope :find_users_tasks_by_status, lambda{ |status, user, project|
   	{
   		:include => :project,

@@ -13,7 +13,7 @@ class Project < ActiveRecord::Base
 
   def as_json(options = {})
   	format = {
-  		:include => :project_category
+  		:include => [:project_category, :notes, :tasks]
   	}
 
   	super format

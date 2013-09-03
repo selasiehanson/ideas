@@ -91,11 +91,11 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		# $scope.note.content = ""
 
 	getNotes = (project_id)->
-		Note.query { project_id: project_id },(res)->
-			$scope.notes = res.data
-			if $scope.notes.length > 0
-				$scope.hasNotes = true
-			return
+		# Note.query { project_id: project_id },(res)->
+		$scope.notes = $scope.data.project.notes
+		if $scope.notes.length > 0
+			$scope.hasNotes = true
+		
 		return
 	
 	defaults()

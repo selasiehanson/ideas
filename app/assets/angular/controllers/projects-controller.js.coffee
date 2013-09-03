@@ -38,13 +38,11 @@ app.controller "ProjectsController", ["$scope", "Project", "ProjectCategory" ,"M
 	$scope.viewNotes = (project)->
 		setCurrentProject(project)
 		$scope.view.showNotes = true
-		console.log "logged"
 		return
 
 	$scope.viewTasks = (project)->
 		$scope.view.showTasks = true
 		setCurrentProject(project)
-		console.log "logged"
 		return
 
 	setCurrentProject = (project)->

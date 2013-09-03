@@ -13,10 +13,10 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 		return
 
 	getTasks = (project_id)->
-		Task.query { project_id: project_id },(res)=>
-			$scope.completedTasks = res.data.completed
-			$scope.pendingTasks = res.data.pending
-			$scope.startedTasks = res.data.started
-			return
+		tasks = $scope.data.project.tasks
+		$scope.completedTasks = _.filter(tasks, (task)-> task.status == "completed" )
+		$scope.pendingTasks 	= _.filter(tasks, (task)-> task.status == "pending" )
+		$scope.startedTasks 	= _.filter(tasks, (task)-> task.status == "started" )
+			
 		return
 	return]
