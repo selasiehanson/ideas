@@ -1,35 +1,39 @@
 app = angular.module "app"
 
 app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", "Data", ($scope, Note, Task, MSG, location, Data)->
-	$scope.hasNotes = false;
+	$scope.hasNotes = false
 	$scope.note = {}
 	$scope.notes = []
 	$scope.location = location
 	
 	$scope.data = Data
 	$scope.clear = ()->
+		$scope.note = {}
 		defaults()
 
 	$scope.submit = ()->
 		$scope.isSaving = true
 		note = new Note($scope.note)
+		note.project_id = $scope.data.project_id
 		if $scope.note.id
 			note.$update (res)->
-				$scope.isSaving =  false
-				afterSave(res)				
+				$scope.isSaving = false
+				afterSave(res)
 				if res.success
 					_note = _.find $scope.notes, (item)->
-						item.id ==  $scope.note.id
+						item.id == $scope.note.id
 					idx = $scope.notes.indexOf(_note)
 					$scope.notes[idx] = res.data[0]
 					defaults()
 
 		else
 			note.$save (res)->
-				$scope.isSaving =  false
+				$scope.isSaving = false
 				afterSave(res)
 				if res.success
-					$scope.notes.unshift res.data[0]
+					if $scope.notes.length == 0 then $scope.notes.push(res.data[0]); console.log("less") else  $scope.notes.unshift(res.data[0])
+					
+						
 		return
 	
 	$scope.createTask = (note)->
@@ -47,12 +51,12 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		return
 	
 	$scope.editNote =  (note)->
-		$scope.note = note
+		$scope.note = angular.copy(note)
 		$scope.buttonText = "Update"
 		$scope.formTitle = "Edit"
 		return
 
-	$scope.deleteNote = (_note , index)->
+	$scope.deleteNote = (_note, index)->
 		note = new Note(_note)
 		note.$delete (res)->
 			afterDelete(res, index)
@@ -66,7 +70,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 
 	afterSave = (res)->
 		notify(res.success, res.message)
-		$scope.note.content = ""
+		$scope.note = {}
 		return
 
 	notify = (status, message)->

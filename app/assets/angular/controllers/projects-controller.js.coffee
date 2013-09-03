@@ -29,7 +29,7 @@ app.controller "ProjectsController", ["$scope", "Project", "ProjectCategory" ,"M
 		return
 	
 	$scope.editProject = (project)->
-		$scope.project = project
+		$scope.project = angular.copy(project)
 		$scope.buttonText = "Update"
 		$scope.formTitle = "Edit"
 		setCurrentProject(project)
@@ -49,10 +49,11 @@ app.controller "ProjectsController", ["$scope", "Project", "ProjectCategory" ,"M
 
 	setCurrentProject = (project)->
 		$scope.data.project = project
-		$scope.data.project_id = project.id;
+		$scope.data.project_id = project.id
 		return
 
 	$scope.clear = ()->
+		$scope.project = {}
 		defaults()
 
 	afterSave = (res)->

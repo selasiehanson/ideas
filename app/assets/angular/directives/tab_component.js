@@ -17,6 +17,8 @@ angular.module('tab_component', []).
           this.select = function(pane) {
             angular.forEach(panes, function(pane) {
               pane.selected = false;
+              //disable other tabs visible property
+              pane.visible = false;
             });
             pane.selected = true;
           }

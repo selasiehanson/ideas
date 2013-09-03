@@ -21,16 +21,15 @@
 			{{ $index + 1}}.
 		</div>
 		<div class="box content">
-			
 			<div class="title inner">
-				<a href="#/projects/{{ project.id}}/edit" ng-click="editProject(project)"> {{ project.title }} </a>
+				<a href="#/{{project.id}}/edit" ng-click="editProject(project)"> {{ project.title }} </a>
 			</div>
 			<div class="description inner">
 				{{ project.description }}
 			</div>
 			<div> 
 				<span class="label label-inverse">category</span> 
-				<i class="label label-important">  {{ project.project_category.name }}</i>
+				<i class="label label-important">  {{ project.project_category.name }} </i>
 			</div>
 		</div>
 		<div class="notes_count">
