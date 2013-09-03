@@ -11,4 +11,11 @@ class Project < ActiveRecord::Base
   has_many :tasks
   default_scope order: 'projects.created_at DESC'
 
+  def as_json(options = {})
+  	format = {
+  		:include => :project_category
+  	}
+
+  	super format
+  end
 end

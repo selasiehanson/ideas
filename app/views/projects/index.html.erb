@@ -1,7 +1,7 @@
 <br>
-<div>
+<div ng-controller="AppController">
 	<tabs>
-		<pane title="Projects">
+		<pane title="Projects" visible="view.showProjects">
 			<div class="clearfix">
 				<div ng-controller="ProjectsController">
 					<div id="the_project_form" class="pull-left">
@@ -14,7 +14,7 @@
 				</div>
 			</div>
 		</pane>
-		<pane title="Notes">
+		<pane title="Notes" visible="view.showNotes">
 			<div ng-controller="NotesController" class="clearfix">
 				<div class="pull-left" id="note_form">
 						<legend> {{ formTitle }} note </legend>
@@ -25,7 +25,7 @@
 				</div>
 			</div>
 		</pane>
-		<pane title="Tasks">
+		<pane title="Tasks" visible="view.showTasks">
 			<div ng-controller="TasksController">
 				<%= render "tasks/list" %>
 			</div>
