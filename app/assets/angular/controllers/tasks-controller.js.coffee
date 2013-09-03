@@ -8,12 +8,18 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 			getTasks(val)
 		return
 
+	$scope.$watch "data.tasksChanged",  (val)->
+		if val
+			getTasks()
+		return
+		
+
 	$scope.updateTask = (state)->
 		console.log state
 		return
 
 	getTasks = (project_id)->
-		tasks = $scope.data.project.tasks
+		tasks = window.tasks = $scope.data.project.tasks
 		$scope.completedTasks = _.filter(tasks, (task)-> task.status == "completed" )
 		$scope.pendingTasks 	= _.filter(tasks, (task)-> task.status == "pending" )
 		$scope.startedTasks 	= _.filter(tasks, (task)-> task.status == "started" )

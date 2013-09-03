@@ -15,15 +15,13 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		$scope.isSaving = true
 		note = new Note($scope.note)
 		note.project_id = $scope.data.project_id
+		id = note.id
 		if $scope.note.id
-			note.$update (res)->
+			note.$update (res)=>
 				$scope.isSaving = false
 				afterSave(res)
 				if res.success
-					_note = _.find $scope.notes, (item)->
-						item.id == $scope.note.id
-					idx = $scope.notes.indexOf(_note)
-					$scope.notes[idx] = res.data[0]
+					updateNoteAfterSave(id, res.data[0])
 					defaults()
 
 		else
@@ -31,7 +29,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 				$scope.isSaving = false
 				afterSave(res)
 				if res.success
-					if $scope.notes.length == 0 then $scope.notes.push(res.data[0]); console.log("less") else  $scope.notes.unshift(res.data[0])
+					if $scope.notes.length == 0 then $scope.notes.push(res.data[0]) else  $scope.notes.unshift(res.data[0])
 					
 						
 		return
@@ -47,6 +45,10 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 				idx = $scope.notes.indexOf(note)
 				$scope.notes.splice(idx, 1)
 				MSG.success(res.message)
+
+				updateTaskAfterCreate(res.data)
+
+				$scope.view.showTasks = true
 			return
 		return
 	
@@ -61,7 +63,6 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		note.$delete (res)->
 			afterDelete(res, index)
 		return
-
 
 	$scope.$watch "data.project_id", (val)->
 		if val
@@ -78,6 +79,18 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 			MSG.success(message)
 		else
 			MSG.error(message)
+
+	updateNoteAfterSave = (id, newObject)->
+		_note = _.find $scope.notes, (item)->
+			item.id == id
+		idx = $scope.notes.indexOf(_note)
+		$scope.notes[idx] = newObject
+
+	updateTaskAfterCreate = (rec)->
+		console.log(rec)
+		$scope.data.project.tasks.push(rec)
+		$scope.data.tasksChanged = true
+		return
 
 	afterDelete = (res, index)->
 		notify(res.success, res.message)
