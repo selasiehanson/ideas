@@ -1,38 +1,9 @@
 Ideas::Application.routes.draw do
   
-  
-  get "tasks/index"
-
-  get "tasks/show"
-
-  get "tasks/create"
-
-  get "tasks/update"
-
-  get "tasks/destroy"
-
-  get "project_categories/index"
-
-  get "project_categories/show"
-
-  get "project_categories/create"
-
-  get "project_categories/update"
-
-  get "project_categories/destroy"
-
-  get "projects/index"
-
-  get "projects/show"
-
-  get "projects/create"
-
-  get "projects/update"
-
-  get "projects/destroy"
+  root to: 'static_pages#home'
 
   resources :users  
-  root to: 'static_pages#home'
+  
   resources :sessions , only: [:new, :create, :destroy]
   resources :project_categories, :only => [:index, :show, :edit]
   resources :projects do
@@ -48,11 +19,12 @@ Ideas::Application.routes.draw do
     end
   end
 
-  match '/signin', to: 'sessions#new'
-  match '/signout', to: "sessions#destroy", via: :delete
-  match "/signup", to: "users#new"
-
-  match '/home', to: "dashboard#show"
+  get '/signin', to: 'sessions#new'
+  get 'signout', to: "sessions#destroy"
+  post "signup", to: "users#new", as: :signup
+  get "signup", to: "users#new", as: :new_signup
+  
+  get '/home', to: "dashboard#show"
   # get '/tasks', to: "tasks#index"
 
   # The priority is based upon order of creation:

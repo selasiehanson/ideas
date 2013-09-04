@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def new
-  	@user  =  User.new
+  	@user = User.new
   end
 
   def create
@@ -16,8 +16,8 @@ class UsersController < ApplicationController
   		flash[:success] = "Welcome to My Tots. Quickly start keeping track of your Ideas"
   		redirect_to projects_url
   	else
-  		flash.now[:error] = "Sorry something went wrong please try again"
-  		render 'new'
+  		flash[:error] = err_msg(@user)
+  		redirect_to new_signup_url
   	end
   end
 
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       flash[:success] = "User updated successfully"
       redirect_to @user
     else
-      flash.now[:error] = "Error. #{@user.errors.full_messages.to_sentence}"
+      flash.now[:error] = err_msg(user)
       render 'edit'
     end
   end
