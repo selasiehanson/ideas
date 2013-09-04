@@ -11,16 +11,18 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 	$scope.$watch "data.tasksChanged",  (val)->
 		if val
 			getTasks()
-		return
-		
+		return	
 
 	$scope.updateTask = (task, newStatus)->
-		
 		task = new Task(task)
 		task.status =  newStatus
 		task.$update (res)->
-			console.log(status)
-			# update ui
+			task = res.data
+			newTask = _.find($scope.data.project.tasks, (_task)->
+				_task.id == task.id
+			)
+			newTask.status = task.status
+			getTasks()
 		return
 
 	getTasks = (project_id)->
