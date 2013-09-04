@@ -49,6 +49,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'figaro'
 
 gem 'jquery-rails'
 
