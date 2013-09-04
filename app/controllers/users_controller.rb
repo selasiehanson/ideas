@@ -12,6 +12,9 @@ class UsersController < ApplicationController
   def create
   	@user = User.create(params[:user])
   	if @user.save
+      
+      UserEmail.signup_notify(@user).deliver
+
   		sign_in @user
   		flash[:success] = "Welcome to My Tots. Quickly start keeping track of your Ideas"
   		redirect_to projects_url
