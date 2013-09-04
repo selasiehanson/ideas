@@ -87,7 +87,6 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		$scope.notes[idx] = newObject
 
 	updateTaskAfterCreate = (rec)->
-		console.log(rec)
 		$scope.data.project.tasks.push(rec)
 		$scope.data.tasksChanged = true
 		return

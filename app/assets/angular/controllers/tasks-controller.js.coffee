@@ -14,8 +14,13 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 		return
 		
 
-	$scope.updateTask = (state)->
-		console.log state
+	$scope.updateTask = (task, newStatus)->
+		
+		task = new Task(task)
+		task.status =  newStatus
+		task.$update (res)->
+			console.log(status)
+			# update ui
 		return
 
 	getTasks = (project_id)->

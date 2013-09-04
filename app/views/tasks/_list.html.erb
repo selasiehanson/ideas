@@ -8,11 +8,17 @@
 				<div class="list_area">
 					<div ng-repeat="task in pendingTasks">
 						<div class="task_row">
-							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
+							{{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
 									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at  | date:'short' }} </b> </em> 
 								</span>
+							</div>
+							<br>
+							<div class="clearfix">
+								<button class='btn btn-mini btn-success pull-right' ng-click="updateTask(task, 'started')">  
+									<i class="icon-white icon-chevron-right"></i> 
+								</button>	
 							</div>
 						</div>
 					</div>
@@ -26,11 +32,20 @@
 				<div class="list_area">
 					<div ng-repeat="task in startedTasks">
 						<div class="task_row">
-							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
+							{{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
 									<em> <b> {{ task.created_at  | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
 								</span>
+							</div>
+							<br>
+							<div class="clearfix">
+								<button class='btn btn-mini btn-danger' ng-click="updateTask(task, 'pending')"> 
+									<i class="icon-white icon-chevron-left"></i> 
+								</button>
+								<button class='btn btn-mini btn-success pull-right' ng-click="updateTask(task, 'completed')">  
+									<i class="icon-white icon-chevron-right"></i> 
+								</button>	
 							</div>
 						</div>
 					</div>
@@ -44,11 +59,18 @@
 				<div class="list_area">
 					<div ng-repeat="task in completedTasks">
 						<div class="task_row">
-							<input type="checkbox" ng-click="updateTask('started')"> {{ task.content }}
+							{{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
 									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
 								</span>
+							</div>
+							<br>
+							<div class="clearfix">
+								<button class='btn btn-mini btn-danger' ng-click="updateTask(task, 'started')"> 
+									<i class="icon-white icon-chevron-left"></i> 
+								</button>
+									
 							</div>
 						</div>
 					</div>

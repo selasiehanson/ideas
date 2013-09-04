@@ -33,6 +33,17 @@ class Api::TasksController < ApplicationController
   end
 
   def update
+    task = Task.find(params[:id])
+    success = false
+    if task.update_attributes(params[:task])
+      msg = "Task has been updated."
+      success = true
+    else
+      msg = err_msg(task)
+    end
+    
+    data = task ? task : nil
+    render :json => {  data: data, message: msg, success: success}
   end
 
   def destroy
