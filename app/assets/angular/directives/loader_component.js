@@ -9,7 +9,7 @@ app.directive("axLoader", [function (){
 			visible: "=",
 			text: "@"
 		},
-		replace: true
+		replace: false
 	}
 	return loader;
 }]);
