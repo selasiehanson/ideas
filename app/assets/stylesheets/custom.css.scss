@@ -351,9 +351,10 @@ $list_border_radius: 4px;
 .ax-loader {
   margin-top: 10px;
   .img {
-    width: 30px;
-    height: 20px;
-    background: url('/assets/icons/gif-load.gif');
+    width: 24px;
+    height: 16px;
+    margin-top: 2px;
+    background: url('/assets/icons/AjaxLoader-16.gif');
     background-repeat: no-repeat;
   }
 }
