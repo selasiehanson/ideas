@@ -18,12 +18,12 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 	# 	console.log("changing as" + val) 
 	# 	if val
 	# 		console.log "updated"
-	# 	return	
+	# 	return
 
 	$scope.updateTask = (task, newStatus)->
 		task = new Task(task)
 		$scope.current_task_id = task.id
-		task.status =  newStatus
+		task.status = newStatus
 		task.$update (res)-> 
 			$scope.current_task_id = null
 			if res.success			

@@ -350,6 +350,12 @@ $list_border_radius: 4px;
 
 .ax-loader {
   margin-top: 10px;
+  .img {
+    width: 30px;
+    height: 20px;
+    background: url('/assets/icons/gif-load.gif');
+    background-repeat: no-repeat;
+  }
 }
 
 .ax-dialog.ax-alert{

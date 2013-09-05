@@ -4,7 +4,7 @@ app.directive("axLoader", [function (){
 
 	var loader = {
 		restrict: "C",
-		template: "<span ng-show='visible' class='ax-loading'> <img src='/assets/icons/gif-load.gif' /> {{ text }} </span>",
+		template: "<span ng-show='visible' class='ax-loading clearfix'> <span class='img pull-left'> </span>	<span class='pull-left'> {{ text }} </span>  </span>",
 		scope: {
 			visible: "=",
 			text: "@"

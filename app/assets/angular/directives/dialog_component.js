@@ -28,8 +28,8 @@ app.directive("axDialog", [function (){
 			  '</div>',
 			  '<div class="modal-footer form-actions">',
 			  	'<span class="ax-loader pull-left" text="{{ processingText }}" visible="showLoader"></span>',
-			    '<a href="" class="btn" ng-click="onCancel()">Cancel</a>',
 			    '<a href="" class="btn btn-primary" ng-click="onOk()">{{ okLabel }}</a>',
+			    '<a href="" class="btn" ng-click="onCancel()">Cancel</a>',
 			  '</div>',
 			'</div>',
 		'</div>'

@@ -6,6 +6,9 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 	$scope.notes = []
 	$scope.location = location
 	$scope.data = Data
+	
+	$scope.show_confirm_delete = true
+	$scope.isDeletingNote = true
 
 	$scope.clear = ()->
 		$scope.note = {}
