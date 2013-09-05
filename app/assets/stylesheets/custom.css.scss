@@ -317,17 +317,20 @@ $list_border_radius: 4px;
           border: 1px solid #C5C1C1;
         }
 
-        .btn {
-          line-height: 17px;
-          i {
-            margin-top: -1px;
-          }
-        }
+        .actions {
+          display: none;
+          .btn {
+            line-height: 17px;
+            i {
+                margin-top: -1px;
+              }
+            }
 
-        .btn-mini {
-          padding: 1px 3px;
+            .btn-mini {
+              padding: 1px 3px;
+            }
+          }  
         }
-      }
     }
     
     

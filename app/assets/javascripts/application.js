@@ -17,3 +17,4 @@
 //= require_tree ../angular
 //= require bootstrap
 //= require underscore.js
+//= require tasks.js

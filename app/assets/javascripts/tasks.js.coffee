@@ -16,7 +16,15 @@ $ ->
 		console.log newHeight
 		return
 
+	enter = ->
+		$(this).find(".actions").show()
 
+	leave = ->
+		$(this).find(".actions").hide()
+
+	
+	$(".list_area").on("mouseenter",".task_row", enter).on("mouseleave", ".task_row", leave)	
+	
 	$(".pending input[type='checkbox']").click(submit_form)
 	$(".started input[type='checkbox']").click(submit_form)
 	

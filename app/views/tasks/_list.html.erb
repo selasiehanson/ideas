@@ -14,7 +14,7 @@
 									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at  | date:'short' }} </b> </em> 
 								</span>
 							</div>
-							<div class="clearfix">
+							<div class="clearfix actions">
 								<button class='btn btn-mini btn-success pull-right' ng-click="updateTask(task, 'started')">  
 									<i class="icon-white icon-chevron-right"></i> 
 								</button>	
@@ -37,7 +37,7 @@
 									<em> <b> {{ task.created_at  | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
 								</span>
 							</div>
-							<div class="clearfix">
+							<div class="clearfix actions">
 								<button class='btn btn-mini btn-danger' ng-click="updateTask(task, 'pending')"> 
 									<i class="icon-white icon-chevron-left"></i> 
 								</button>
@@ -63,7 +63,7 @@
 									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
 								</span>
 							</div>
-							<div class="clearfix">
+							<div class="clearfix actions">
 								<button class='btn btn-mini btn-danger' ng-click="updateTask(task, 'started')"> 
 									<i class="icon-white icon-chevron-left"></i> 
 								</button>
