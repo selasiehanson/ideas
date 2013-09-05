@@ -1,0 +1,12 @@
+<ax-dialog 
+	title="Delete Note?"
+	visible="show_confirm_delete"
+	on-cancel="cancelDelete()"
+	ok-label="Yes"
+  on-ok="deleteNote()"
+  type="ax-alert"
+  processing-text="deleting note..."
+  show-loader="isDeletingNote"
+	>
+  <p> Are you sure u want to delete this note? </p>
+</ax-dialog>
