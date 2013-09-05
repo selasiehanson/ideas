@@ -18,19 +18,25 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 	# 	console.log("changing as" + val) 
 	# 	if val
 	# 		console.log "updated"
-			
 	# 	return	
 
 	$scope.updateTask = (task, newStatus)->
 		task = new Task(task)
+		$scope.current_task_id = task.id
 		task.status =  newStatus
-		task.$update (res)->
-			task = res.data
-			newTask = _.find($scope.data.project.tasks, (_task)->
-				_task.id == task.id
-			)
-			newTask.status = task.status
-			getTasks()
+		task.$update (res)-> 
+			$scope.current_task_id = null
+			if res.success			
+				task = res.data
+				newTask = _.find($scope.data.project.tasks, (_task)->
+					_task.id == task.id
+				)
+				newTask.status = task.status
+				getTasks()
+			else
+				msg = res.message || "Something went wrong please try again"
+				MSG.error msg
+				
 		return
 
 	getTasks = (project_id)->

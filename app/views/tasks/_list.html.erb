@@ -8,7 +8,7 @@
 				<div class="list_area">
 					<div ng-repeat="task in pendingTasks">
 						<div class="task_row">
-							{{ task.content }}
+							<span class="ax-loader" visible="task.id == current_task_id"></span>{{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
 									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at  | date:'short' }} </b> </em> 
@@ -31,7 +31,7 @@
 				<div class="list_area">
 					<div ng-repeat="task in startedTasks">
 						<div class="task_row">
-							{{ task.content }}
+							<span class="ax-loader" visible="task.id == current_task_id"></span>{{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
 									<em> <b> {{ task.created_at  | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
@@ -57,7 +57,7 @@
 				<div class="list_area">
 					<div ng-repeat="task in completedTasks">
 						<div class="task_row">
-							{{ task.content }}
+							<span class="ax-loader" visible="task.id == current_task_id"></span>{{ task.content }}
 							<div class='clearfix'>
 								<span class="pull-right times"> 
 									<em> <b> {{ task.created_at | date:'short' }} - {{ task.updated_at | date:'short' }} </b> </em> 
