@@ -5,8 +5,8 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 	$scope.note = {}
 	$scope.notes = []
 	$scope.location = location
-	
 	$scope.data = Data
+
 	$scope.clear = ()->
 		$scope.note = {}
 		defaults()
@@ -58,10 +58,26 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		$scope.formTitle = "Edit"
 		return
 
-	$scope.deleteNote = (_note, index)->
+	$scope.promptDelete = (note, index)->
+		$scope.show_confirm_delete = true
+		$scope.toBeDeleted = 
+			note: note
+			index: index
+
+	$scope.cancelDelete = ()->
+		$scope.show_confirm_delete = false
+		$scope.toBeDeleted = {}
+
+	$scope.deleteNote = ()->
+		# would be nice to show a loader whiles deleting
+		_note = $scope.toBeDeleted.note
+		index = $scope.toBeDeleted.index
+		$scope.isDeletingNote = true
 		note = new Note(_note)
 		note.$delete (res)->
 			afterDelete(res, index)
+			$scope.show_confirm_delete = false
+
 		return
 
 	$scope.$watch "data.project_id", (val)->
@@ -92,6 +108,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		return
 
 	afterDelete = (res, index)->
+		$scope.isDeletingNote = false
 		notify(res.success, res.message)
 		if res.success
 			$scope.notes.splice index, 1

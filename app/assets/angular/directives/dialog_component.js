@@ -3,7 +3,19 @@ var app = angular.module("dialog", []);
 app.directive("axDialog", [function (){
 
 	var linkFn = function (scope, element, attrs){
-
+		var klass = attrs.type 
+		
+		switch(attrs.type)
+		{
+			case "ax-alert":
+				klass = "ax-alert"
+			break;
+			case "ax-form":
+			break;
+			default:
+				klass = "";
+		}
+		$(element).addClass(klass)
 	}
 	var template = [
 		'<div ng-show="visible" class="ax-dialog">',
@@ -15,6 +27,7 @@ app.directive("axDialog", [function (){
 			  '<div class="modal-body" ng-transclude>',
 			  '</div>',
 			  '<div class="modal-footer form-actions">',
+			  	'<span class="ax-loader pull-left" text="{{ processingText }}" visible="showLoader"></span>',
 			    '<a href="" class="btn" ng-click="onCancel()">Cancel</a>',
 			    '<a href="" class="btn btn-primary" ng-click="onOk()">{{ okLabel }}</a>',
 			  '</div>',
@@ -29,7 +42,9 @@ app.directive("axDialog", [function (){
 			title: "@",
 			visible: "=",
 			onOk : "&",
-			onCancel: "&"
+			onCancel: "&",
+			processingText: "@",
+			showLoader: "="
 		},
 		replace: true,
 		transclude: true,

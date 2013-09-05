@@ -344,3 +344,14 @@ $list_border_radius: 4px;
 .ax-loader {
   margin-top: 10px;
 }
+
+.ax-dialog.ax-alert{
+  $modal-width: 350px;
+  .modal {
+    width: $modal-width;
+    margin-left: -$modal-width/2 ;
+    .modal-footer {
+      margin-top: 0px;
+    }
+  }
+}
