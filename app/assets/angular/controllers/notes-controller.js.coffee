@@ -36,7 +36,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 	
 	$scope.createTask = (note)->
 		_newTask = angular.copy(note)
-		_newTask.note_id = _newTask.id
+		$scope.current_note_task_id = _newTask.note_id = _newTask.id
 		delete _newTask.id 
 		
 		task =  new Task(_newTask)
@@ -103,6 +103,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		$scope.notes[idx] = newObject
 
 	updateTaskAfterCreate = (rec)->
+		$scope.current_note_task_id = null
 		$scope.data.project.tasks.push(rec)
 		$scope.data.tasksChanged = true
 		return

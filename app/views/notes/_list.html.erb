@@ -12,7 +12,10 @@
 <table class="table table-bordered table-striped" ng-show="hasNotes">
 	<tr ng-repeat="note in notes">
 		<td class="action_column1"> {{ $index + 1}}. </td>
-		<td> {{ note.content }} </td>
+		<td> 
+			<span class="ax-loader" visible="note.id == current_note_task_id"></span> {{ note.content }} 
+
+		</td>
 		<td class="time_col">  {{ note.created_at | date:'short' }} </td>
 		<td class="note_actions">
 			<span class="task_form">									
