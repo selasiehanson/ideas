@@ -30,10 +30,16 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 				afterSave(res)
 				if res.success
 					if $scope.notes.length == 0 then $scope.notes.push(res.data[0]) else  $scope.notes.unshift(res.data[0])
-					
-						
 		return
 	
+	$scope.$watch "notes.length", (val)->
+		if val	
+			if val > 0
+				$scope.hasNotes = true
+			else
+				$scope.hasNotes = false
+		return
+
 	$scope.createTask = (note)->
 		_newTask = angular.copy(note)
 		$scope.current_note_task_id = _newTask.note_id = _newTask.id
@@ -103,7 +109,7 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 		$scope.notes[idx] = newObject
 
 	updateTaskAfterCreate = (rec)->
-		$scope.current_note_task_id = null
+		# $scope.current_note_task_id = null
 		$scope.data.project.tasks.push(rec)
 		$scope.data.tasksChanged = true
 		return
@@ -123,9 +129,6 @@ app.controller "NotesController",["$scope", "Note", "Task", "MSG", "$location", 
 	getNotes = (project_id)->
 		# Note.query { project_id: project_id },(res)->
 		$scope.notes = $scope.data.project.notes
-		if $scope.notes.length > 0
-			$scope.hasNotes = true
-		
 		return
 	
 	defaults()

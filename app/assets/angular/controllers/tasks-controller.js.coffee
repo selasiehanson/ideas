@@ -2,16 +2,24 @@ app =  angular.module("app")
 
 app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Task, MSG, Data)->
 	$scope.data = Data
+	$scope.tasks = 0
 
 	$scope.$watch "data.project_id", (val)->
 		if val
 			getTasks(val)
 		return
 
-	$scope.$watch "data.tasksChanged",  (val)->
+	$scope.$watch "tasks.length", (val)->
 		if val
 			getTasks()
-		return	
+		return
+
+	# $scope.$watch "data.tasksChanged",  (val)->
+	# 	console.log("changing as" + val) 
+	# 	if val
+	# 		console.log "updated"
+			
+	# 	return	
 
 	$scope.updateTask = (task, newStatus)->
 		task = new Task(task)
@@ -26,10 +34,10 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 		return
 
 	getTasks = (project_id)->
-		tasks = window.tasks = $scope.data.project.tasks
-		$scope.completedTasks = _.filter(tasks, (task)-> task.status == "completed" )
-		$scope.pendingTasks 	= _.filter(tasks, (task)-> task.status == "pending" )
-		$scope.startedTasks 	= _.filter(tasks, (task)-> task.status == "started" )
+		$scope.tasks = window.tasks = $scope.data.project.tasks
+		$scope.completedTasks = _.filter($scope.tasks, (task)-> task.status == "completed" )
+		$scope.pendingTasks 	= _.filter($scope.tasks, (task)-> task.status == "pending" )
+		$scope.startedTasks 	= _.filter($scope.tasks, (task)-> task.status == "started" )
 			
 		return
 	return]
