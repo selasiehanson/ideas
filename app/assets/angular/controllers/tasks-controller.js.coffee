@@ -32,6 +32,8 @@ app.controller "TasksController", [ "$scope", "Task", "MSG", "Data", ($scope,Tas
 					_task.id == task.id
 				)
 				newTask.status = task.status
+				newTask.updated_at = task.updated_at
+				newTask.created_at = task.created_at
 				getTasks()
 			else
 				msg = res.message || "Something went wrong please try again"
