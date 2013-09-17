@@ -1,8 +1,9 @@
-
 @import "bootstrap";
 
 /* universal */
 $grayMediumLight: #eaeaea;
+$grayLight : #dedede;
+$grayDarker: #ccc;
 
 @mixin box_sizing {
   -moz-box-sizing: border-box; 
@@ -31,6 +32,11 @@ textarea {
   resize: vertical;
 }
 
+.image-container {
+  margin-bottom: 10px;
+  padding: 2px 10px;
+  border: 1px solid #E9EAEB;
+}
 .note_tasks_back_link {
   a {
     color : #699CB6;
@@ -307,11 +313,12 @@ $list_border_radius: 4px;
         padding: 5px;
         border: 1px solid #CCC;
         border-radius: $list_border_radius - 1;
+        
         .times {
           background: #CBD1DF;
           font-size: 10px;
           padding: 0px 5px;
-          color: #000;
+          color: #1A1A1A;
           margin-top: 5px;
           margin-bottom: 5px;
           border: 1px solid #C5C1C1;

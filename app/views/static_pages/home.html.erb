@@ -4,9 +4,24 @@
 <% if current_user %>
 	
 <% else %>
-	<div> description and pictures go here </div>
-	<div>
-		<h2>SignUp</h2>
-		<%= button_to "Click Here to Sign Up", signup_path, :class => "btn btn-info" %>
+ 
+	
+	<div class="">
+		<div class=" clearfix">
+			<div class="span12 ">
+				<p>
+					Have you ever wanted to carry a small note or use simple 
+					project manamgement app to keep track of all the things you do?
+				</p>
+				<p>
+					<span class="logo_text"> My Tots </span>  is your answer. Hurry, 
+					<span class="logo_text"> sign up </span> and Give it a try
+					<%= button_to "Sign Up for Free", signup_path, :class => "btn btn-info" %>
+				</p>
+			</div>
+	
+		</div>
 	</div>
+	<%= render "carousel" %>
+	
 <% end %>
