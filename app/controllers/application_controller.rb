@@ -2,7 +2,6 @@ class ApplicationController < ActionController::Base
   	protect_from_forgery
   	include SessionsHelper
 
-
   	protected
 	    def fetch_project
 	      @project = Project.find(params[:project_id])

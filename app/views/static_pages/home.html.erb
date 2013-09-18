@@ -4,8 +4,7 @@
 <% if current_user %>
 	
 <% else %>
- 
-	
+	<%= render "carousel" %>
 	<div class="">
 		<div class=" clearfix">
 			<div class="span12 ">
@@ -16,12 +15,9 @@
 				<p>
 					<span class="logo_text"> My Tots </span>  is your answer. Hurry, 
 					<span class="logo_text"> sign up </span> and Give it a try
-					<%= button_to "Sign Up for Free", signup_path, :class => "btn btn-info" %>
+					<%= button_to "Sign Up for Free", signup_path, :class => "btn btn-success btn-large" %>
 				</p>
 			</div>
-	
 		</div>
 	</div>
-	<%= render "carousel" %>
-	
 <% end %>

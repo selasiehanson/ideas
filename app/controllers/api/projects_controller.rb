@@ -14,7 +14,7 @@ class Api::ProjectsController < ApplicationController
     success = false
     @project = current_user.projects.build(params[:project])
     if @project.save
-      msg = "Project Idea successfully created!"    
+      msg = "Project '#{@project.title}' successfully created!"    
       success = true
     else
       msg = err_msg(@project)
@@ -31,7 +31,7 @@ class Api::ProjectsController < ApplicationController
       @project.project_category = ProjectCategory.find(params[:project][:project_category_id])
       
       if @project.save
-        msg  = "Project '#{@project.title}' Updated succesffuly"
+        msg  = "Project '#{@project.title}' updated succesffuly"
         success = true
         data = [@project]
       else
@@ -48,7 +48,7 @@ class Api::ProjectsController < ApplicationController
   end
 
   private
-    def fetch_project
-      @project = Project.find(params[:id])
-    end
+    # def fetch_project
+    #   @project = Project.find(params[:id])
+    # end
 end
