@@ -85,7 +85,17 @@ h1 {
 }
 
 .logo_text{
-  color : #CEA62F;
+  // color : #CEA62F;
+  color: #AC8614;
+}
+
+.sign_link {
+  color: #CC8B00; 
+  margin-left: 20px;
+}
+
+.sign_link:hover {
+  color: #AC8614;  
 }
 
 h2 {
