@@ -15,11 +15,13 @@
 		<div class="control-group">
 			<label class="control-label"> Project Category </label>
 			<div class="controls">
-				<select 
-					class=""
-					ng-options="cat.id as cat.name for cat in userProjectsCategories"
-					ng-model="project.project_category_id">
-				</select>
+				<ax-select ng-model="project.project_category_id" watch="userProjectsCategories" prop="id">
+					<select 
+						class="project_select"
+						ng-options="cat.id as cat.name for cat in userProjectsCategories"
+						ng-model="project.project_category_id">
+					</select>
+				</ax-select>
 			</div>
 		</div>
 		<input type="submit" value="{{ buttonText }} Project" class="btn btn-success" >
