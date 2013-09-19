@@ -1,5 +1,5 @@
 class Api::TasksController < ApplicationController
-  before_filter :fetch_project, only: [:index, :create, :update]
+  before_filter :fetch_project, only: [:index, :create]
   def index
     pending_tasks = Task.find_users_tasks_by_status(:pending, current_user, @project)
     started_tasks = Task.find_users_tasks_by_status(:started, current_user, @project)
