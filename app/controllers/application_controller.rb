@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 
   	protected
 	    def fetch_project
-	      @project = Project.find(params[:project_id])
+	      @project = Project.find(params[:id])
 	    end
 	  	def err_msg(obj)
 	      "Error. #{obj.errors.full_messages.to_sentence}"

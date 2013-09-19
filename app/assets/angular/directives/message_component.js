@@ -29,7 +29,7 @@ angular.module("messenger",[]).directive("axMsg", ["$rootScope", function ($root
 	return {
 		restrict: "E",
 		link : linkFn,
-		template: '<div class="alert {{ type }} notification-box" ng-show="display"> <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }} </div>',
+		template: '<div class="alert {{ type }} notification-box" ng-show="display"> <button type="button" class="close" ng-click="display=false">&times;</button> {{ message }} </div>',
 		scope: {
 			message: "@",
 			display: "@",

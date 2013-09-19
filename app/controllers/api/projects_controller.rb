@@ -26,11 +26,8 @@ class Api::ProjectsController < ApplicationController
   def update
     success = false
     if @project
-      @project.title = params[:project][:title]
-      @project.description = params[:project][:description]
-      @project.project_category = ProjectCategory.find(params[:project][:project_category_id])
       
-      if @project.save
+      if @project.update_attributes(params[:project])
         msg  = "Project '#{@project.title}' updated succesffuly"
         success = true
         data = [@project]
@@ -46,9 +43,4 @@ class Api::ProjectsController < ApplicationController
 
   def destroy
   end
-
-  private
-    # def fetch_project
-    #   @project = Project.find(params[:id])
-    # end
 end
