@@ -14,32 +14,7 @@ class ProjectsController < ApplicationController
 	def destroy
 	end
 
-	def edit
-		@project = Project.find(params[:id])
-		@projects = current_user.projects
-		@project_categories = current_user.project_categories	
-	end
-
-	def update
-		@project = Project.find(params[:id])
-		
-		@project.title = params[:project][:title]
-		@project.description = params[:project][:description]
-		@project.project_category = ProjectCategory.find(params[:project][:project_category_id])
-		
-		if @project.save
-			flash[:success] = "Project '#{@project.title}' Updated succesffuly"
-			@projects = current_user.projects
-			redirect_to projects_path
-		else
-			# flash.now[:error] = "Error. something went wrong. Please try again"
-			flash.now[:error] = @project.errors.full_messages.to_sentence
-			# @projects = current_user.projects
-			render "edit"	
-		end
-	end
-
-	private 
+	private
 	def correct_project_owner
 		@project = current_user.projects.find_by_id(params[:id])
 		redirect_to signin_url if @project.nil?
