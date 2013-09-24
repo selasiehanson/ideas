@@ -249,7 +249,17 @@ input {
 .time_col { 
   width: 100px;
 }
-
+#projects_notes_tasks_container {
+  ul {
+    margin-bottom: 0px;
+  }
+  .nav-tabs {
+    border-bottom: 0px;
+  }
+  .nav {
+    margin-bottom: 0px;
+  }
+}
 #projects_container {
   border: 1px solid #bbb;
   border-bottom: 0px;
