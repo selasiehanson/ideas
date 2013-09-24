@@ -48,6 +48,7 @@ gem 'unicorn'
 
 group :production do
   gem 'pg'
+  gem 'ngmin-rails'
 end
 
 gem 'figaro'
