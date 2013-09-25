@@ -5,25 +5,21 @@
       <div class="nav-collapse">
         <ul class="nav pull-right">
           <% if signed_in? %>
-            <li><%= link_to "Home", home_path %></li>
-            <li class="dropdown">
-               <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                  My Stuff
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li> <%= link_to "Projects", projects_path  %> </li>
-                  <li> <%= link_to "Project Categories", project_categories_path %> 
-                  </li>
-                </ul>
-            </li>
-            <li><%= link_to "Profile", user_path(current_user) %></li>
-            <li>
-              <%= link_to "Sign out", signout_path, method: "delete" %>
-            </li>
-          <% else %>
-            <li> <%= link_to "Sign in", signin_path %> </li>
-          <% end %>
+               <li class="<%= active_klass('Home', yield( :title )) %>">
+                   <%= link_to "Home" , root_path %>
+                </li>
+                <li class="<%= active_klass('Projects', yield( :title )) %>">
+                   <%= link_to "Projects", projects_path  %>
+                </li>
+                <li class="<%= active_klass('Profile', yield( :title )) %>">
+                   <%= link_to "Profile", user_path(current_user) %>
+                </li>
+                <li>
+                   <%= link_to "Sign out", signout_path, method: "delete" %>
+                </li>
+           <% else %>
+                <li> <%= link_to "Sign in", signin_path %> </li>
+           <% end %>
         </ul>
       </div>
     </div>
